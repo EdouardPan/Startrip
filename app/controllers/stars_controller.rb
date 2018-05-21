@@ -1,4 +1,7 @@
 class StarsController < ApplicationController
+  def index
+  end
+
   def new
   end
 
@@ -20,6 +23,4 @@ class StarsController < ApplicationController
   def show
   end
 
-  def index
-  end
 end

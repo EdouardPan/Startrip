@@ -1,21 +1,13 @@
 Rails.application.routes.draw do
-  get 'index/star_reviews'
-  get 'index/new'
-  get 'index/create'
-  get 'bookings/new'
-  get 'bookings/create'
-  get 'bookings/edit'
-  get 'bookings/update'
-  get 'bookings/destroy'
-  get 'stars/new'
-  get 'stars/create'
-  get 'stars/top'
-  get 'stars/edit'
-  get 'stars/update'
-  get 'stars/destroy'
-  get 'stars/show'
-  get 'stars/index'
+
   devise_for :users
-  root to: 'pages#home'
+  # Because this has helpers that can be called anywhere, one doesn't need
+  # to nest this anywhere. Users reste à part.
+  root to: 'stars#index'
+
+  resources :stars do
+    resources :bookings, only: [:new, :create, :edit, :update, :destroy]
+    resources :star_reviews, only: [:new, :create]
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
