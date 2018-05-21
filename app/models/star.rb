@@ -91,7 +91,7 @@ class Star < ApplicationRecord
 # "Volans",
 # "Vulpecula"]
 
-  validates :name, presence: true, uniqueness :true
+  validates :name, presence: true, uniqueness: true
   validates :constellation, presence: true,  inclusion: { in: array_of_constellations } # Needs to be completed later
   validates :water, inclusion: { in: (0..100).to_a }
   validates :breathability, inclusion: { in: (0..100).to_a }
