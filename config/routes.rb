@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   # to nest this anywhere. Users reste à part.
   root to: 'stars#index'
 
+  get '/profile', to: 'profiles#dashboard'
+
   resources :stars do
     resources :bookings, only: [:new, :create, :edit, :update, :destroy]
     resources :star_reviews, only: [:new, :create]
