@@ -3,7 +3,7 @@ class Booking < ApplicationRecord
   belongs_to :star
 
   validates :arrival_date, presence: true
-  validates :departure_date, presence: true,
+  validates :departure_date, presence: true
 
   # validates :date_order
 
