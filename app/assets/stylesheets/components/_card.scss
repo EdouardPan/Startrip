@@ -1,0 +1,62 @@
+.card {
+  margin: 10px;
+  border-radius: 1px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+
+.card-body {
+  height: 180px;
+  background-size: cover;
+  color: white;
+  position: relative;
+}
+
+.card-category {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 18px;
+  letter-spacing: 1px;
+  font-weight: lighter;
+  opacity: 0.9;
+}
+
+.card-description {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+.card-description h2 {
+  font-size: 20px;
+  margin-bottom: 0px;
+  font-weight: bold;
+}
+
+.card-description p {
+  font-size: 14px;
+  font-weight: lighter;
+  opacity: 0.9;
+}
+
+.avatar-small {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+.card-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 2;
+}
+
+// .card:hover {
+//   margin-top: -5px;
+// }
