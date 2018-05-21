@@ -5,7 +5,7 @@ class Star < ApplicationRecord
   has_many :star_reviews, dependent: :destroy
 
   validates :name, presence: true, uniqueness :true
-  validates :constellation, presence: true,  inclusion: { in: ["Andromeda", "Antlia", "Apus"]} # Needs to be completed later
+  validates :constellation, presence: true,  inclusion: { in: ["Andromeda", "Antlia", "Apus"] } # Needs to be completed later
   validates :water, inclusion: { in: (0..100).to_a }
   validates :breathability, inclusion: { in: (0..100).to_a }
   validates :asteroid_attack, numericality: { in: (0..100).to_a }
