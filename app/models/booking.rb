@@ -5,12 +5,12 @@ class Booking < ApplicationRecord
   validates :arrival_date, presence: true
   validates :departure_date, presence: true,
 
-  validate :date_order
+  # validates :date_order
 
-  def date_order
-    if departure_date <= arrival_date
-      errors.add(:departure_date, "cannot be before arrival date.")
-    end
-  end
+  # def date_order
+  #   if departure_date <= arrival_date
+  #     errors.add(:departure_date, "cannot be before arrival date.")
+  #   end
+  # end
 
 end
