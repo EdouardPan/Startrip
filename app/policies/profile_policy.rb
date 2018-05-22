@@ -1,6 +1,6 @@
 class ProfilePolicy < ApplicationPolicy
   def dashboard?
-    record.user == user
+    true
   end
   class Scope < Scope
     def resolve
