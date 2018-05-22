@@ -10,6 +10,7 @@ class CreateStars < ActiveRecord::Migration[5.2]
       t.boolean :life_existence
       t.text :description
       t.integer :price_per_day
+      t.string :photos, array: true, default: []
       t.references :user, foreign_key: true
 
       t.timestamps

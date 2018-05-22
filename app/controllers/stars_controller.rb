@@ -27,7 +27,8 @@ class StarsController < ApplicationController
   end
 
   def search
-    @stars = Star.where(constellation: params[:constellation])
+    raise
+    @stars = Star.where(constellation: params[:query])
   end
 
 end

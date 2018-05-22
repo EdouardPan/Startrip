@@ -28,14 +28,6 @@ ActiveRecord::Schema.define(version: 2018_05_21_123649) do
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
-  create_table "star_photos", force: :cascade do |t|
-    t.string "photo"
-    t.bigint "star_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["star_id"], name: "index_star_photos_on_star_id"
-  end
-
   create_table "star_reviews", force: :cascade do |t|
     t.integer "rating"
     t.text "comment"
@@ -85,7 +77,6 @@ ActiveRecord::Schema.define(version: 2018_05_21_123649) do
 
   add_foreign_key "bookings", "stars"
   add_foreign_key "bookings", "users"
-  add_foreign_key "star_photos", "stars"
   add_foreign_key "star_reviews", "stars"
   add_foreign_key "star_reviews", "users"
   add_foreign_key "stars", "users"
