@@ -1,13 +1,15 @@
-  <div class="card">
-    <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url(<%= cl_image_path(object.photos.first, width: 400, height: 300, crop: :fill) %>);">
-      <span class="card-category"><%= object.constellation %></span>
-      <div class="card-description">
-        <!-- <h2><%#= star.name %></h2> -->
-        <h2><%= object.name %></h2>
-        <p><%= object.user.username %>'s star!</p>
-      </div>
-      <!-- Remplacer img_tag par cl-img_tag -->
-      <%= image_tag 'alien1.jpg', class: "avatar-small" %>
-      <%= link_to "", star_path(object), class: "card-link"  %>
+
+
+<div class="card">
+  <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url(<%= cl_image_path(object.photos.first, width: 400, height: 300, crop: :fill) %>);">
+    <span class="card-category"><%= object.constellation %></span>
+    <div class="card-description">
+      <!-- <h2><%#= star.name %></h2> -->
+      <h2><%= object.name %></h2>
+      <p><%= object.user.username %>'s star!</p>
     </div>
+    <!-- Remplacer img_tag par cl-img_tag -->
+    <%= image_tag 'alien1.jpg', class: "avatar-small" %>
+    <%= link_to "", star_path(object), class: "card-link"  %>
   </div>
+</div>
