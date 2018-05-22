@@ -3,6 +3,7 @@ class StarsController < ApplicationController
 
   def index
    @stars = policy_scope(Star)
+   @constellation = Star.all.map{ |star| star.constellation }
   end
 
   def new

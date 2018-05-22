@@ -31,7 +31,7 @@ class StarPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      scope.all
+      scope.all.sample(6)
     end
   end
 end
