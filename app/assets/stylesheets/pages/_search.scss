@@ -10,12 +10,16 @@
 }
 
 #map {
-  flex: 0 0 450px;
-  height: 100vh;
+  flex: 0 0 500px;
+  height: 50vh;
   position: sticky !important;
   top: 0 !important;
 }
 
 .content {
   display: flex;
+}
+
+.cards-container {
+  flex-grow: 1;
 }
