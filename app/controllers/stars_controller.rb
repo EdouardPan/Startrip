@@ -27,7 +27,6 @@ class StarsController < ApplicationController
   end
 
   def search
-
     @stars = Star.where(constellation: params[:query])
     authorize @stars
   end
