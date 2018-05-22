@@ -6,11 +6,13 @@
 </div>
 
 <div class="container">
-  <%# @stars.each do |star| %>
-    <!-- <div class="row">
-      <%= #render 'shared/card', object: star %>
-    </div>-->
-  <% end %>
+  <div class="row">
+    <% @stars.each do |star| %>
+        <div class="col-xs-4">
+          <%= render 'shared/card', object: star %>
+        </div>
+    <% end %>
+  </div>
 </div>
 
 
