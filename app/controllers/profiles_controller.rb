@@ -3,7 +3,7 @@ class ProfilesController < ApplicationController
     authorize :profile, :dashboard?
     #--- Renting a star
     # Instance variable to index a user's bookings
-    @my_name = current_user.username
+    @my_info = current_user
     @my_bookings = current_user.bookings
     @my_stars = current_user.stars
 
