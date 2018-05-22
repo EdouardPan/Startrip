@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2018_05_21_123649) do
     t.boolean "life_existence"
     t.text "description"
     t.integer "price_per_day"
-    t.string "photos", default: [], array: true
+    t.json "photos"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -110,11 +110,19 @@ star_id_array = []
     username: Faker::Name.name_with_middle,
     password: '123456',
     human: [true, false].sample)
-  #binding.pry
-
   new_user.save!
   user_id_array.push(new_user.id)
 end
+
+photo_cloudinary = ["https://upload.wikimedia.org/wikipedia/commons/6/62/Starsinthesky.jpg",
+  "https://sites.create-cdn.net/siteimages/36/4/9/364983/12/3/4/12343581/500x367.jpg?1464280292",
+  "https://cdn.pixabay.com/photo/2016/03/09/09/37/stars-1245902_960_720.jpg",
+"http://en.es-static.us/upl/2018/01/planet-artist.jpg",
+"https://media3.s-nbcnews.com/i/newscms/2017_25/2049696/artist-s-rendition-of-planet-10-image-heather-roper-lpl_573724__d25e876e6c99af15819632d766b9dda6.png",
+"https://cdni.rt.com/files/2017.11/article/5a04343bfc7e93916f8b4568.jpg",
+"https://r.hswstatic.com/w_1024/gif/planet-host-star-orig.jpg",
+"http://www.wallpaperawesome.com/wallpapers-awesome/wallpapers-planets-stars-galaxies-nebulae-sci-fi-awesome/wallpaper-space-planet-star-galaxy-nebula-sci-fi-awesome-56.jpg",
+"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTL7zGa0C-J8jCq9x2Hl-aCmBOGjBV0Trmwl8qGF9iHPITLlk4wA"]
 
 10.times do
   new_star = Star.new(
@@ -128,28 +136,12 @@ end
     life_existence: [true, false, false, false, false].sample,
     description: "On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et empêche de se concentrer sur la mise en page elle-même. L'avantage du Lorem Ipsum sur un texte générique comme 'Du texte. Du texte. Du texte.' est qu'il possède une distribution de lettres plus ou moins normale, et en tout cas comparable avec celle du français standard. De nombreuses suites logicielles de mise en page ou éditeurs de sites Web ont fait du Lorem Ipsum leur faux texte par défaut, et une recherche pour 'Lorem Ipsum' vous conduira vers de nombreux sites qui n'en sont encore qu'à leur phase de construction. Plusieurs versions sont apparues avec le temps, parfois par accident, souvent intentionnellement (histoire d'y rajouter de petits clins d'oeil, voire des phrases embarassantes).",
     price_per_day: (100..1000).to_a.sample)
-    new_star.save!
-    star_id_array.push(new_star.id)
+
+  new_star.remote_photos_urls = photo_cloudinary
+
+  new_star.save!
+  puts "Star added"
 end
 
-photo_cloudinary = ["Printed_Acoustic_Ceiling_Tile_Murals_1370-22_1024x1024",
-  "celestial-ann-marie-bone",
-  "undefined",
-  "stjernehimmel",
-  "image-251531-breitwandaufmacher-ihhg-251531",
-  "space",
-  "300px-LH_95",
-  "images",
-  "Starsinthesky"]
-
-star_id_array.each do |id|
-  puts "photo_name"
-  p photo = photo_cloudinary.sample
-  star = StarPhoto.new(
-    star_id: id,
-    photo: photo)
-  p star
-  star.save!
-end
 
 puts "Shit is seeded"
