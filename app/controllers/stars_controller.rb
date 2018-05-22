@@ -1,5 +1,6 @@
 class StarsController < ApplicationController
   def index
+    @stars = Star.all.sample(5)
   end
 
   def new
