@@ -7,10 +7,16 @@ class Booking < ApplicationRecord
 
   validate :date_order
 
+  private
+
   def date_order
      if departure_date <= arrival_date
        errors.add(:departure_date, "cannot be before arrival date.")
      end
+  end
+
+  def trip_price
+    (self.departure_date - self.arrival_date).to_i * self.star.price_per_day
   end
 
 end
