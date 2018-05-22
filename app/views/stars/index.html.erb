@@ -3,8 +3,8 @@
   <p>
     <span id="banner-typed-text"></span>
     <%= simple_form_for :query, url: stars_search_path, method: 'get', html: {class: 'form-inline'} do |f| %>
-      <%= f.input :constellation, as: :select, collection: @constellation, label: false, input_hmtl: { class:'select2' } %>
-      <%= f.button :submit, class: 'btn-warning' %>
+      <%= f.input :constellation, as: :select, input_hmtl: { class:'select2' }, collection: @constellation, label: false %>
+      <%= f.button :submit, value: 'Find', class: 'btn-warning' %>
     <% end %>
   </p>
 </div>
