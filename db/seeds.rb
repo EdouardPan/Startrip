@@ -132,10 +132,24 @@ end
     star_id_array.push(new_star.id)
 end
 
+photo_cloudinary = ["Printed_Acoustic_Ceiling_Tile_Murals_1370-22_1024x1024",
+  "celestial-ann-marie-bone",
+  "undefined",
+  "stjernehimmel",
+  "image-251531-breitwandaufmacher-ihhg-251531",
+  "space",
+  "300px-LH_95",
+  "images",
+  "Starsinthesky"]
+
 star_id_array.each do |id|
-  StarPhoto.new(
+  puts "photo_name"
+  p photo = photo_cloudinary.sample
+  star = StarPhoto.new(
     star_id: id,
-    photo: 'https://picsum.photos/200/300/?random')
+    photo: photo)
+  p star
+  star.save!
 end
 
 puts "Shit is seeded"

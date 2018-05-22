@@ -2,6 +2,7 @@ class StarsController < ApplicationController
   skip_after_action :verify_authorized, only: [:show, :top]
 
   def index
+    @stars = Star.all.sample(5)
   end
 
   def new
