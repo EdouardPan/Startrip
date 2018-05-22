@@ -1,4 +1,6 @@
 class StarsController < ApplicationController
+  skip_after_action :verify_authorized, only: [:show, :top]
+
   def index
   end
 
