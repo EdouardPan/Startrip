@@ -4,7 +4,7 @@ class Star < ApplicationRecord
   has_many :star_photos, dependent: :destroy
   has_many :star_reviews, dependent: :destroy
 
-   array_of_constellations = [
+  array_of_constellations = [
     "Andromeda",
     "Antlia",
     "Apus",
