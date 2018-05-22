@@ -41,7 +41,7 @@
   font-size: 16px;
 }
 .navbar-wagon-link:hover {
-  color: #da552f;
+  color: #CB83A4;
   text-decoration: none;
   transition: color 0.9s ease;
 }
@@ -82,4 +82,8 @@
 .fa-reddit-alien {
   font-size: 30px;
   color: white;
+  &:hover {
+    color: #CB83A4;
+    transition: color 0.9s ease;
+  }
 }
