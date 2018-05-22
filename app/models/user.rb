@@ -9,6 +9,6 @@ class User < ApplicationRecord
   has_many :star_reviews, dependent: :destroy
 
   validates :username, presence: true, uniqueness: true
-  validates :human, presence: true
+  validates :human, :inclusion => { :in => [true, false] }
 
 end
