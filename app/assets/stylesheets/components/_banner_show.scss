@@ -1,18 +1,15 @@
-.home-banner {
-  background-image: asset-url('home-banner.jpg');
+.show-banner {
   background-size: cover;
   background-position: center;
-  height: 100vh;
+  height: 70vh;
   color: #eee;
   text-align: center;
   padding-top: 40vh;
-  h1 {
-    text-shadow: 3px 2px black;
-  }
 }
 
 #banner-typed-text {
   color: black;
   font-size: 26px;
 }
+
 

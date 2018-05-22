@@ -1,2 +1,32 @@
-<h1>Stars#show</h1>
-<p>Find me in app/views/stars/show.html.erb</p>
+<%= render 'shared/banner_show' %>
+
+<div class="header-star">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-1">
+        <div class="header-star-details">
+          <div class="header-star-name">
+            <h1><%= @star.name%></h1>
+          </div>
+          <div class="header-star-owner">
+            <%= cl_image_tag("http://res.cloudinary.com/floflow/image/upload/v1526999812/alien1.jpg", width: 70, crop: :fill) %>
+            <p>Username<p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <%= simple_form_for([@star, @booking]) do |t| %>
+          <%= t.input :arrival_date %>
+          <%= t.input :departure_date %>
+          <%= t.submit class: 'btn btn-primary' %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="description"><p><%= @star.description%></p></div>
+</div>
+
