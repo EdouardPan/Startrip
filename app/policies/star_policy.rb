@@ -21,6 +21,10 @@ class StarPolicy < ApplicationPolicy
     edit?
   end
 
+  def search?
+    true
+  end
+
   def show?
     true
   end

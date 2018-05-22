@@ -1,8 +1,8 @@
 class StarsController < ApplicationController
-  skip_after_action :verify_authorized, only: [:show, :top]
+  skip_before_action :authenticate_user!, only: [:show, :index, :search]
 
   def index
-    @stars = Star.all.sample(5)
+   @stars = policy_scope(Star)
   end
 
   def new
@@ -27,8 +27,9 @@ class StarsController < ApplicationController
   end
 
   def search
-    raise
+
     @stars = Star.where(constellation: params[:query])
+    authorize @stars
   end
 
 end
