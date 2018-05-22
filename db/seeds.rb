@@ -124,7 +124,7 @@ photo_cloudinary = ["https://upload.wikimedia.org/wikipedia/commons/6/62/Starsin
 "http://www.wallpaperawesome.com/wallpapers-awesome/wallpapers-planets-stars-galaxies-nebulae-sci-fi-awesome/wallpaper-space-planet-star-galaxy-nebula-sci-fi-awesome-56.jpg",
 "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTL7zGa0C-J8jCq9x2Hl-aCmBOGjBV0Trmwl8qGF9iHPITLlk4wA"]
 
-2.times do
+10.times do
   new_star = Star.new(
     user_id: user_id_array.sample,
     name: Faker::Name.first_name,
@@ -137,11 +137,10 @@ photo_cloudinary = ["https://upload.wikimedia.org/wikipedia/commons/6/62/Starsin
     description: "On sait depuis longtemps que travailler avec du texte lisible et contenant du sens est source de distractions, et empêche de se concentrer sur la mise en page elle-même. L'avantage du Lorem Ipsum sur un texte générique comme 'Du texte. Du texte. Du texte.' est qu'il possède une distribution de lettres plus ou moins normale, et en tout cas comparable avec celle du français standard. De nombreuses suites logicielles de mise en page ou éditeurs de sites Web ont fait du Lorem Ipsum leur faux texte par défaut, et une recherche pour 'Lorem Ipsum' vous conduira vers de nombreux sites qui n'en sont encore qu'à leur phase de construction. Plusieurs versions sont apparues avec le temps, parfois par accident, souvent intentionnellement (histoire d'y rajouter de petits clins d'oeil, voire des phrases embarassantes).",
     price_per_day: (100..1000).to_a.sample)
 
-  photo_cloudinary.sample(3).each do |photo|
-    new_star.remote_photos_urls = photo
-  end
+    new_star.remote_photos_urls = photo_cloudinary.sample(1)
 
   new_star.save!
+
 end
 
 
