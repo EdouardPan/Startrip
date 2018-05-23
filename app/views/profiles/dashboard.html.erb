@@ -13,13 +13,11 @@
 <h1>My bookings</h1>
 
 <% unless @my_bookings.nil? %>
-  <ul>
   <% @my_bookings.each do |booking| %>
-    <li><%= booking.star.name %></li>
-    <li><%= booking.star.user %></li>
-    <li><%= @my_bookings.price %></li>
+    <div>
+      <%= link_to booking.star.name, star_path(booking.star) %> - <%= booking.trip_price %> $
+    </div>
   <% end %>
-  </ul>
 <% end %>
 
 <h1>My stars</h1>
@@ -27,8 +25,7 @@
 <% unless @my_stars.nil? %>
   <ul>
   <% @my_stars.each do |star| %>
-    <li><%= star.name %></li>
-    <li><%= star.constellation %></li>
+    <%= link_to star.name, star_path(star) %> - <%= star.constellation %>
       <%= link_to star_path(star), method: :delete, data: {confirm: "Are you sure?"} do  %>
       <i class="fas fa-trash-alt"></i>
       <% end %>

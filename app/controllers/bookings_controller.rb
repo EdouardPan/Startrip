@@ -5,8 +5,10 @@ class BookingsController < ApplicationController
     @star = Star.find(params[:star_id])
     @user = current_user
     @booking = Booking.new(booking_params)
+    authorize @booking
     @booking.star = @star
     @booking.user = @user
+    @booking.trip_price = @booking.total_price
     if @booking.save
       redirect_to profile_path
     else
