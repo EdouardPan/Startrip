@@ -4,6 +4,7 @@ class StarsController < ApplicationController
 
   def index
    @stars = policy_scope(Star)
+   @constellation = Star.all.map{ |star| star.constellation }
   end
 
   def new
@@ -30,7 +31,7 @@ class StarsController < ApplicationController
   end
 
   def search
-    @stars = Star.where(constellation: params[:query])
+    @stars = Star.where(constellation: params[:query][:constellation])
     authorize @stars
   end
 

@@ -1,0 +1,35 @@
+<h1>My info</h1>
+
+
+<p>username: <%=  @my_info.username %></p>
+<p>Species:
+<%if  @my_info.human == "true" %>
+  human
+  <% else %>
+  alien
+<% end %>
+</p>
+
+<h1>My bookings</h1>
+
+<% unless @my_bookings.empty? %>
+  <% @my_bookings.star.each do |star| %>
+  <ul>
+    <li><%= star.name %></li>
+    <li><%= star.user %></li>
+  <% end %>
+    <li><%= @my_bookings.price %></li>
+  </ul>
+<% end %>
+
+<h1>My Stars</h1>
+
+<% unless @my_stars.empty? %>
+  <% @my_star.star.each do |star| %>
+  <ul>
+    <li><%= star.name %></li>
+    <li><%= star.bookings.status %></li>
+  <% end %>
+  </ul>
+<% end %>
+

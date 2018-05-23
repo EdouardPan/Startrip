@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root to: 'stars#index'
 
   get '/profile', to: 'profiles#dashboard'
+  # This route needs to be id-specific and made with devise
 
   # Search
   get '/stars/search', to: 'stars#search'

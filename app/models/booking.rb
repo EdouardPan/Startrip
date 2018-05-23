@@ -5,12 +5,18 @@ class Booking < ApplicationRecord
   validates :arrival_date, presence: true
   validates :departure_date, presence: true
 
-  # validates :date_order
+  validate :date_order
 
-  # def date_order
-  #   if departure_date <= arrival_date
-  #     errors.add(:departure_date, "cannot be before arrival date.")
-  #   end
-  # end
+  private
+
+  def date_order
+     if departure_date <= arrival_date
+       errors.add(:departure_date, "cannot be before arrival date.")
+     end
+  end
+
+  def trip_price
+    (self.departure_date - self.arrival_date).to_i * self.star.price_per_day
+  end
 
 end
