@@ -7,10 +7,17 @@ class StarsController < ApplicationController
    @constellation = Star.all.map{ |star| star.constellation }
   end
 
-  def new
-  end
+  # def new
+  # end
 
   def create
+    @star = Star.new(star_params)
+    @star.user = current_user
+    if @star.save!
+      redirect_to profile_path
+    else
+      render :new
+    end
   end
 
   def top
@@ -20,9 +27,16 @@ class StarsController < ApplicationController
   end
 
   def update
+    if @star.update(star_params)
+      redirect_to profile_path
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @star.destroy
+    redirect_to profile_path
   end
 
   def show
@@ -41,4 +55,9 @@ class StarsController < ApplicationController
     @star = Star.find(params[:id])
   end
 
+  def star_params
+    params.require(:star).permit(:name, :constellation, :water, :breathability, :asteroid_attack, :daylight, :life_existence, :description, :price_per_day, :photos)
+  end
+
 end
+
