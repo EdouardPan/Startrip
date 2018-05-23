@@ -29,9 +29,12 @@
   <% @my_stars.each do |star| %>
     <li><%= star.name %></li>
     <li><%= star.constellation %></li>
-    <%= link_to star_path(star), method: :delete, data: {confirm: "Are you sure?"} do  %>
-    <i class="fas fa-trash-alt"></i>
-    <% end %>
+      <%= link_to star_path(star), method: :delete, data: {confirm: "Are you sure?"} do  %>
+      <i class="fas fa-trash-alt"></i>
+      <% end %>
+      <%= link_to edit_star_path(star) do  %>
+      <i class="fas fa-pencil-alt"></i>
+      <% end %>
   <% end %>
   </ul>
 <% end %>
@@ -133,7 +136,9 @@
   <%= f.input :asteroid_attack, collection: (0..100).to_a %>
   <%= f.input :description, required: true %>
   <%= f.input :price_per_day, required: true %>
-  <%= f.submit %>
+  <%= f.input :photos %>
+  <%= f.input :photos_cache, as: :hidden %>
+  <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>
 
 
