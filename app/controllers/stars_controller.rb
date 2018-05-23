@@ -26,9 +26,11 @@ class StarsController < ApplicationController
   end
 
   def edit
+    authorize @star
   end
 
   def update
+    authorize @star
     if @star.update(star_params)
       redirect_to profile_path
     else
