@@ -1,0 +1,83 @@
+.wrapper {
+  height: 100vh;
+}
+
+.container-greetings {
+  background: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0.4), transparent), asset-url('form-banner.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 20vh;
+  h1 {
+    padding-top: 50px;
+    color: white;
+    text-shadow: 3px 2px $space-pink;
+    margin-top: 0;
+  }
+  p {
+    color: white;
+    padding-left: 3px;
+  }
+}
+
+.container-tabs {
+  padding-top: 20px;
+
+}
+
+.nav-pills {
+  padding: 20px;
+}
+
+.nav-pills {
+  li {
+    padding-right: 20px;
+    &:active {
+      background-color: $space-pink;
+    }
+    a {
+      color: $gray;
+      border: 2px solid $gray;
+      border-radius: 10px;
+      &:hover {
+        opacity: 0.3;
+      }
+    }
+  }
+}
+
+.nav-pills>li.active>a,
+.nav-pills>li.active>a:focus,
+.nav-pills>li.active>a:hover {
+   background-color: $space-pink;
+   border: 2px solid $space-pink;
+}
+
+.tab-content {
+  h1 {
+    color: black;
+  }
+  p {
+    color: black;
+  }
+}
+
+.tab-title {
+  padding-bottom: 20px;
+}
+
+#tab-pane {
+  height: 100vh;
+}
+
+.star-form {
+  h1 {
+    padding-top: 50px;
+    color: white;
+    text-shadow: 3px 2px $space-pink;
+    margin-top: 0;
+  }
+  background-color: black;
+  background-size: cover;
+  background-position: center;
+  padding: 30px;
+}
