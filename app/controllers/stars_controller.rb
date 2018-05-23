@@ -11,7 +11,9 @@ class StarsController < ApplicationController
   # end
 
   def create
+
     @star = Star.new(star_params)
+    authorize @star
     @star.user = current_user
     if @star.save!
       redirect_to profile_path
@@ -35,6 +37,7 @@ class StarsController < ApplicationController
   end
 
   def destroy
+    authorize @star
     @star.destroy
     redirect_to profile_path
   end

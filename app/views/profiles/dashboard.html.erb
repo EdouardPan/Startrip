@@ -12,29 +12,31 @@
 
 <h1>My bookings</h1>
 
-<% unless @my_bookings.empty? %>
-  <% @my_bookings.star.each do |star| %>
+<% unless @my_bookings.nil? %>
   <ul>
-    <li><%= star.name %></li>
-    <li><%= star.user %></li>
-  <% end %>
+  <% @my_bookings.each do |booking| %>
+    <li><%= booking.star.name %></li>
+    <li><%= booking.star.user %></li>
     <li><%= @my_bookings.price %></li>
-  </ul>
-<% end %>
-
-<h1>My Stars</h1>
-
-<% unless @my_stars.empty? %>
-  <% @my_star.star.each do |star| %>
-  <ul>
-    <li><%= star.name %></li>
-    <li><%= star.bookings.status %></li>
   <% end %>
   </ul>
-  <%= link_to 'delete', star_path(star), method: :delete, data: { confirm: 'Are you sure?' }  %>
 <% end %>
 
-<%= simple_form_for (@new_star) do |f| %>
+<h1>My stars</h1>
+
+<% unless @my_stars.nil? %>
+  <ul>
+  <% @my_stars.each do |star| %>
+    <li><%= star.name %></li>
+    <li><%= star.constellation %></li>
+    <%= link_to star_path(star), method: :delete, data: {confirm: "Are you sure?"} do  %>
+    <i class="fas fa-trash-alt"></i>
+    <% end %>
+  <% end %>
+  </ul>
+<% end %>
+
+<%= simple_form_for(@new_star) do |f| %>
   <!-- The new star path is all we need. This is connected to @new_star-->
   <%= f.input :name, required: true %>
   <%= f.input :constellation, required: true, collection: [
@@ -133,4 +135,6 @@
   <%= f.input :price_per_day, required: true %>
   <%= f.submit %>
 <% end %>
+
+
 
