@@ -7,6 +7,10 @@ class Booking < ApplicationRecord
 
   validate :date_order
 
+  def total_price
+    (self.departure_date - self.arrival_date).to_i * self.star.price_per_day
+  end
+
   private
 
   def date_order
@@ -14,9 +18,4 @@ class Booking < ApplicationRecord
        errors.add(:departure_date, "cannot be before arrival date.")
      end
   end
-
-  def trip_price
-    (self.departure_date - self.arrival_date).to_i * self.star.price_per_day
-  end
-
 end
