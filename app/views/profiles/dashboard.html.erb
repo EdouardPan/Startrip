@@ -136,7 +136,7 @@
   <%= f.input :asteroid_attack, collection: (0..100).to_a %>
   <%= f.input :description, required: true %>
   <%= f.input :price_per_day, required: true %>
-  <%= f.input :photos %>
+  <%= f.input :photos, as: :file, multiple: true %>
   <%= f.input :photos_cache, as: :hidden %>
   <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>
