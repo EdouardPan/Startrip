@@ -1,0 +1,68 @@
+.wrapper-form {
+  background: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0.4), transparent), asset-url('form-banner.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  h3 {
+    margin-top: 50px;
+    color: white;
+    text-shadow: 3px 2px $space-pink;
+  }
+}
+
+.form-inputs {
+  margin-top: 50px;
+  margin-left: 30px;
+  margin-right: 30px;
+  border-color: $space-pink;
+}
+
+.form-control {
+  border-color: $space-pink;
+  background-color: transparent;
+  color: white;
+  &:focus {
+    border-color: $space-pink;
+    box-shadow: 0 0 5px rgba(98, 101, 228, 1) !important;
+  }
+}
+
+.form-devise-links {
+  margin-top: -30px;
+  margin-bottom: 50px;
+  font-size: 15px;
+  font-weight: lighter;
+  a {
+    color: white;
+  }
+}
+
+.simple_form {
+  div.input {
+
+  }
+  label {
+    color: white;
+    font-size: 16px;
+    font-weight: lighter;
+  }
+}
+
+.btn-space-pink {
+    background-color: $space-pink;
+    color: white;
+    width: 100px;
+  }
+
+.form-actions {
+  .btn-space-pink {
+    background-color: $space-pink;
+    color: white;
+    width: 100px;
+  }
+
+}
+
+#user_remember_me {
+  margin-right: 10px;
+}
