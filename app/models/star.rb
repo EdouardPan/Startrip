@@ -96,11 +96,11 @@ class Star < ApplicationRecord
     "Volans",
     "Vulpecula"]
 
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true
   validates :constellation, presence: true,  inclusion: { in: array_of_constellations } # Needs to be completed later
-  validates :water, inclusion: { in: (0..100).to_a }
-  validates :breathability, inclusion: { in: (0..100).to_a }
-  validates :asteroid_attack, numericality: { in: (0..100).to_a }
+  validates :water, presence: true, inclusion: { in: (0..100).to_a }
+  validates :breathability, presence: true, inclusion: { in: (0..100).to_a }
+  validates :asteroid_attack, presence:true, numericality: { in: (0..100).to_a }
   validates :description, presence: true, length: { minimum: 150 }
   validates :price_per_day, presence: true, numericality: { only_integer: true, greater_than: 0 }
 end

@@ -6,6 +6,7 @@ class ProfilesController < ApplicationController
     @my_info = current_user
     @my_bookings = current_user.bookings
     @my_stars = current_user.stars
+    @new_star = Star.new
 
     # Link to delete/cancel a booking
 
