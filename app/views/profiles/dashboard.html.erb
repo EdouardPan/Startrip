@@ -31,6 +31,7 @@
     <li><%= star.bookings.status %></li>
   <% end %>
   </ul>
+  <%= link_to 'delete', star_path(star), method: :delete, data: { confirm: 'Are you sure?' }  %>
 <% end %>
 
 <%= simple_form_for (@new_star) do |f| %>
