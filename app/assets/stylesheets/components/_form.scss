@@ -1,8 +1,11 @@
 .wrapper-form {
-  background-image: asset-url('home-banner.jpg');
+  background: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0.4), transparent), asset-url('form-banner.jpg');
+  background-size: cover;
+  background-position: center;
   h3 {
     margin-top: 50px;
     color: white;
+    text-shadow: 3px 2px $space-pink;
   }
 }
 
@@ -28,6 +31,9 @@
   margin-bottom: 50px;
   font-size: 15px;
   font-weight: lighter;
+  a {
+    color: white;
+  }
 }
 
 .simple_form {
@@ -35,7 +41,9 @@
 
   }
   label {
-    color: $space-pink;
+    color: white;
+    font-size: 16px;
+    font-weight: lighter;
   }
 }
 
@@ -43,6 +51,7 @@
   .btn-space-pink {
     background-color: $space-pink;
     color: white;
+    width: 100px;
   }
 
 }
