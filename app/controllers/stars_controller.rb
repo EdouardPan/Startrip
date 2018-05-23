@@ -14,7 +14,7 @@ class StarsController < ApplicationController
     @star = Star.new(star_params)
     @star.user = current_user
     if @star.save!
-      redirect_to star_path(@star)
+      redirect_to profile_path
     else
       render :new
     end
@@ -27,9 +27,16 @@ class StarsController < ApplicationController
   end
 
   def update
+    if @star.update(star_params)
+      redirect_to profile_path
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @star.destroy
+    redirect_to profile_path
   end
 
   def show
