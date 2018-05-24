@@ -18,4 +18,5 @@ class Booking < ApplicationRecord
        errors.add(:departure_date, "cannot be before arrival date.")
      end
   end
+
 end

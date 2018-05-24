@@ -22,6 +22,10 @@ class BookingsController < ApplicationController
     redirect_to profile_path
   end
 
+  def date_blocker
+    @star = Star.find(params[:star_id])
+  end
+
   private
 
   def booking_params
