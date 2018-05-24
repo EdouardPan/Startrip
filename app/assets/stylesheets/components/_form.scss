@@ -2,7 +2,6 @@
   background: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0.4), transparent), asset-url('form-banner.jpg');
   background-size: cover;
   background-position: center;
-  height: 100vh;
   h3 {
     margin-top: 0px;
     color: white;
@@ -24,12 +23,12 @@
 
 .form-control {
   border-color: $space-pink;
-  background-color: transparent;
-  color: white;
+  background-color: white;
+  color: black;
   &:focus {
     border-color: $space-pink;
     box-shadow: 0 0 5px rgba(98, 101, 228, 1) !important;
-    border-width: 5px;
+    border-width: 3px;
   }
 }
 
@@ -64,10 +63,22 @@
     background-color: $space-pink;
     color: white;
     padding: 10px;
+    font-size: 15px;
   }
+}
 
+.explore {
+  font-size: 16px;
 }
 
 #user_remember_me {
   margin-right: 10px;
 }
+
+.query-input {
+  width: 500px;
+}
+
+
+
+
