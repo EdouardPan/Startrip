@@ -7,6 +7,15 @@ class ProfilesController < ApplicationController
     @my_bookings = current_user.bookings
     @my_stars = current_user.stars
     @new_star = Star.new
+    @my_booked_stars = Booking.joins(:star).where(stars: {user: current_user}).where("departure_date >= ?", Date.today )
+
+    # @my_stars.each do |star|
+    #   star.bookings.each do |booking|
+    #     if booking.departure_date > Date.today
+    #       @my_booked_stars.push(booking)
+    #     end
+    #   end
+    # end
 
     # Link to delete/cancel a booking
 

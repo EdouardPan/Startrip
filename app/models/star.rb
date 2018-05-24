@@ -4,6 +4,7 @@ class Star < ApplicationRecord
   has_many :star_reviews, dependent: :destroy
 
   mount_uploader :photos, PhotoUploader
+  validates_presence_of :photos
 
   CONSTELLATIONS = {
     "Andromeda" => { lat: 49.803410, lng: 3.397971 },
@@ -36,5 +37,4 @@ class Star < ApplicationRecord
     self.latitude = CONSTELLATIONS[constellation][:lat] + rand(-0.5..0.5)
     self.longitude = CONSTELLATIONS[constellation][:lng] + rand(-0.5..0.5)
   end
-
 end

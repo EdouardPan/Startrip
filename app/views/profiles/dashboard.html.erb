@@ -1,6 +1,5 @@
 <div class="wrapper">
 
-
   <div class="container-greetings">
     <div class="container">
       <h1>Hi <%=  @my_info.username %>!</h1>
@@ -15,6 +14,7 @@
         <li role="presentation" class="active"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">My info</a></li>
         <li role="presentation"><a href="#bookings" aria-controls="bookings" role="tab" data-toggle="tab">My bookings</a></li>
         <li role="presentation"><a href="#stars" aria-controls="stars" role="tab" data-toggle="tab">My stars</a></li>
+        <li role="presentation"><a href="#newstar" aria-controls="newstar" role="tab" data-toggle="tab">Add a New star</a></li>
 
       </ul>
     </div>
@@ -28,7 +28,7 @@
         </div>
         <p>username: <%=  @my_info.username %></p>
         <p>Species:
-        <%if  @my_info.human == true %>
+        <%if @my_info.human == true %>
           human
           <% else %>
           alien
@@ -45,28 +45,48 @@
             </div>
           <% end %>
         <% end %>
-
-
       </div>
+
       <div role="tabpanel" class="tab-pane" id="stars">
-        <h1>My stars</h1>
+        <div class="container">
+          <div class="container-index">
+            <div class="row">
+              <h1>My stars</h1>
+                <% unless @my_stars.nil? %>
+                  <% @my_stars.each do |star| %>
+                    <div class="col-xs-4">
+                      <%= render 'shared/card', object: star %>
+                      <%= link_to star.name, star_path(star) %> - <%= star.constellation %>
+                      <%= link_to star_path(star), method: :delete, data: {confirm: "Are you sure?"} do  %>
+                      <i class="fas fa-trash-alt"></i>
+                      <% end %>
+                      <%= link_to edit_star_path(star) do  %>
+                      <i class="fas fa-pencil-alt"></i>
+                      <% end %>
+                    </div>
+                  <% end %>
+                <% end %>
+            </div>
+          </div>
+        </div>
 
-         <% unless @my_stars.nil? %>
-           <ul>
-           <% @my_stars.each do |star| %>
-             <%= link_to star.name, star_path(star) %> - <%= star.constellation %>
-                <%= link_to star_path(star), method: :delete, data: {confirm: "Are you sure?"} do  %>
-                  <i class="fas fa-trash-alt"></i>
-                <% end %>
-                <%= link_to edit_star_path(star) do  %>
-                  <i class="fas fa-pencil-alt"></i>
-                <% end %>
+        <h1>My booked stars</h1>
+        <div class="container">
+          <div class="container-index">
+            <div class="row"> -->
+              <%@my_booked_stars.each do |booking| %>
+              <div class="col-xs-4">
+                <%= render 'shared/card', object: booking.star %>
+                <p> From <%= booking.arrival_date%> to <%= booking.arrival_date %> </p>
+                <p> by <%= booking.user.username %> </p>
+              </div>
               <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
 
-          </ul>
-         <% end %>
-
-
+      <div role="tabpanel" class="tab-pane" id="newstar">
         <div class="star-form ">
           <div class="tab-title text-center">
             <h1>Add your star for rent</h1>
@@ -115,7 +135,7 @@
             </div>
           <% end %>
         </div>
-
+      </div>
 
         </div>
         <div role="tabpanel" class="tab-pane" id="settings">...</div>
