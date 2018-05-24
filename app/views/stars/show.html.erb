@@ -1,5 +1,25 @@
 <%= render 'shared/banner_show' %>
 
+<% if @star.user == current_user %>
+  <div class="container">
+
+        <h1><%= @star.name%></h1>
+        <p><em>*This star belongs to you</em></p>
+
+
+          <%= cl_image_tag("http://res.cloudinary.com/floflow/image/upload/v1526999812/alien1.jpg", width: 70, crop: :fill) %>
+          <p><%=@star.user.username%></p>
+
+
+          <h3>More about <%= @star.name%> </h3>
+          <p class="text-justify"><%= @star.description%> </p>
+          <p><i class="fas fa-tint"> </i>Water: <%= @star.water%> %</p>
+          <p><i class="fas fa-leaf"> </i> Breathability: <%= @star.breathability%> %</p>
+          <p><i class="fas fa-star"> </i> Asteroid attack: <%= @star.asteroid_attack%> %</p>
+          <p><i class="fas fa-sun"> </i>Daylight: <%= @star.daylight%> %</p>
+          <p><i class="fas fa-heart"> </i>Life existence: <%= @star.life_existence%> </p>
+
+<% else %>
 <div class="container">
   <div class="profil">
     <div class="starname">
@@ -34,6 +54,7 @@
     </div>
   </div>
 </div>
+<% end %>
 
 
 
