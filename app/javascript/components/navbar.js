@@ -1,5 +1,5 @@
 function initUpdateNavbarOnScroll() {
-  const navbar = document.querySelector('.navbar-wagon');
+  const navbar = document.querySelector('#banner-home');
   window.addEventListener('scroll', () => {
     if (window.scrollY >= 100) {
       console.log("1er cas");

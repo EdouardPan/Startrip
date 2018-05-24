@@ -106,11 +106,6 @@
             </div>
           </div>
         </div>
-
-
-      </div>
-          <% end %>
-        <% end %>
       </div>
 
       <div role="tabpanel" class="tab-pane" id="stars">
@@ -139,7 +134,7 @@
         <h1>My booked stars</h1>
         <div class="container">
           <div class="container-index">
-            <div class="row"> -->
+            <div class="row">
               <%@my_booked_stars.each do |booking| %>
               <div class="col-xs-4">
                 <%= render 'shared/card', object: booking.star %>
@@ -151,7 +146,7 @@
           </div>
         </div>
       </div>
-    
+
       <div role="tabpanel" class="tab-pane" id="newstar">
         <div class="star-form ">
           <div class="tab-title text-center">

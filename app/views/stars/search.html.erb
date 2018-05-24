@@ -1,15 +1,18 @@
-<div class="filter-banner">
-  <p>Filters here</p>
-</div>
+
 
 <div class="content">
-  <div class="cards-container">
-    <div class="row">
-      <% @stars.each do |s| %>
-        <div class="col-xs-12 col-sm-6">
-          <%= render 'shared/card', object: s %>
-        </div>
-      <% end %>
+  <div class="left-side">
+    <div class="filter-banner">
+      <p>Filters here</p>
+    </div>
+    <div class="cards-container">
+      <div class="row">
+        <% @stars.each do |s| %>
+          <div class="col-xs-12 col-sm-6">
+            <%= render 'shared/card', object: s %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
   <div id="map" data-markers="<%= @markers.to_json %>"></div>

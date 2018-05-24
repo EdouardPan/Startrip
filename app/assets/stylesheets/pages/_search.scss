@@ -1,32 +1,32 @@
+.content {
+  display: flex;
+  align-items: stretch;
+}
+
 .filter-banner {
   background-color: $gray;
   height: 50px;
   color: #eee;
   text-align: center;
-  position: fixed;
-  width: 100%;
   z-index: 100;
-  top: 70px;
+  width:100%;
   p {
     padding: 10px;
   }
 }
 
-.content {
-  display: flex;
-  align-items: stretch;
-  margin-top: 50px;
+.left-side {
+  flex-grow: 1;
 }
+
 
 #map {
   flex: 0 0 450px;
-  height: calc(100vh - 70px - 50px);
+  height: calc(100vh - 70px);
   position: sticky !important;
-  top: 0 !important;
+  top: 70px !important;
 }
 
 
 
-.cards-container {
-  flex-grow: 1;
-}
+
