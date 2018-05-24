@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div class="wrapper wrapper-dashboard">
 
   <div class="container-greetings">
     <div class="container">
@@ -8,7 +8,7 @@
   </div>
 
   <div class="container">
-      <div class="container-tabs">
+      <div class="container-tabs centered-pills">
       <!-- Nav tabs -->
       <ul class="nav nav-pills" role="tablist">
         <li role="presentation" <%= "class=active" if @tab == "info" %> ><a href="#info" aria-controls="info" role="tab" data-toggle="tab">My info</a></li>
@@ -21,18 +21,27 @@
     <!-- Tab panes -->
   <div class="container">
     <div class="tab-content text-center">
+
       <div role="tabpanel" class="tab-pane <%= 'active' if @tab == "info" %>" id="info">
-        <div class="tab-title">
+        <div class="container container-info">
           <h1>My info</h1>
+
+          <%= cl_image_tag(@my_info.avatar, width: 150, height: 150, crop: :thumb, gravity: :face, class: 'cercle-avatar') %>
+
+          <p>username: <%=  @my_info.username %></p>
+          <p>Species:
+          <%if  @my_info.human == true %>
+            human
+            <% else %>
+            alien
+          <% end %>
+          </p>
+
+          <%= link_to edit_user_registration_path do  %>
+            <p>Edit your profile</p>
+          <% end %>
+
         </div>
-        <p>username: <%=  @my_info.username %></p>
-        <p>Species:
-        <%if  @my_info.human == true %>
-          human
-          <% else %>
-          alien
-        <% end %>
-        </p>
       </div>
 
 
@@ -40,25 +49,62 @@
       <div role="tabpanel" class="tab-pane <%= 'active' if @tab == "bookings" %>" id="bookings">
         <h1>My bookings</h1>
 
-        <div class="current-bookings">
-          <h3>Your current trips</h3>
-        </div>
-
-        <div class="next-bookings">
-          <h3>Your next trips</h3>
-        </div>
-
-        <div class="past-bookings">
-          <h3>Your past trips</h3>
-        </div>
-
-        <% unless @my_bookings.nil? %>
-          <% @my_bookings.each do |booking| %>
-            <div class="col-xs-4">
-              <%= render 'shared/card', object: booking.star %>
+        <div class="container">
+          <div class="current-bookings text-center">
+            <h3>Your current trips</h3>
+            <div class="current-bookings-cards">
+              <% if @current_bookings.empty? %>
+                <p>You have no current trips planned.</p>
+              <% else %>
+                <% @current_bookings.each do |booking| %>
+                  <div class="col-xs-4">
+                    <%= render 'shared/card', object: booking.star %>
+                    <%= link_to star_booking_path(booking.star, booking), method: :delete, data: {confirm: "Are you sure?"} do  %>
+                      <p>Delete this booking</p>
+                    <% end %>
+                  </div>
+                <% end %>
+              <% end %>
             </div>
-          <% end %>
-        <% end %>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="next-bookings">
+            <h3>Your next trips</h3>
+            <div class="next-bookings-cards">
+              <% if @next_bookings.empty? %>
+                <p>You have no future trips planned.</p>
+              <% else %>
+                <% @next_bookings.each do |booking| %>
+                  <div class="col-xs-4">
+                    <%= render 'shared/card', object: booking.star %>
+                    <%= link_to star_booking_path(booking.star, booking), method: :delete, data: {confirm: "Are you sure?"} do  %>
+                      <p>Delete this booking</p>
+                    <% end %>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="past-bookings">
+            <h3>Your past trips</h3>
+            <div class="past-bookings-cards">
+              <% if @past_bookings.empty? %>
+                <p>You have no future trips planned.</p>
+              <% else %>
+                <% @past_bookings.each do |booking| %>
+                  <div class="col-xs-4">
+                    <%= render 'shared/card', object: booking.star %>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
 
 
       </div>

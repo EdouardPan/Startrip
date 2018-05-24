@@ -1,4 +1,6 @@
-
+.wrapper-dashboard {
+  margin-bottom: 150px;
+}
 
 .container-greetings {
   background: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0.4), transparent), asset-url('form-banner.jpg');
@@ -59,9 +61,8 @@
   }
 }
 
-.tab-title {
-  padding-bottom: 20px;
-}
+
+
 
 #tab-pane {
   height: 100vh;
@@ -79,3 +80,14 @@
   background-position: center;
   padding: 30px;
 }
+
+.centered-pills { text-align:center; }
+.centered-pills ul.nav-pills { display:inline-block; }
+.centered-pills li { display:inline; }
+.centered-pills a { float:left; }
+
+
+.cercle-avatar {
+  border-radius: 50%;
+}
+
