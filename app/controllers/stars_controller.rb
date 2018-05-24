@@ -15,10 +15,14 @@ class StarsController < ApplicationController
     @star = Star.new(star_params)
     authorize @star
     @star.user = current_user
-    if @star.save!
+    if @star.save
       redirect_to profile_path
     else
-      render :new
+      @my_info = current_user
+      @my_bookings = current_user.bookings
+      @my_stars = current_user.stars
+      @new_star = @star
+      render 'profiles/dashboard'
     end
   end
 

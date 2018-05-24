@@ -4,6 +4,7 @@ class Star < ApplicationRecord
   has_many :star_reviews, dependent: :destroy
 
   mount_uploader :photos, PhotoUploader
+  validates_presence_of :photos
 
   array_of_constellations = [
     "Andromeda",
@@ -102,4 +103,5 @@ class Star < ApplicationRecord
   validates :asteroid_attack, presence:true, numericality: { in: (0..100).to_a }
   validates :description, presence: true, length: { minimum: 150 }
   validates :price_per_day, presence: true, numericality: { only_integer: true, greater_than: 0 }
+
 end
