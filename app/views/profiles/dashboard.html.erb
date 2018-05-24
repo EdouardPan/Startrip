@@ -96,98 +96,35 @@
             <!-- The new star path is all we need. This is connected to @new_star-->
             <div class="form-inputs form-group text-center">
             <%= f.input :name, required: true %>
-            <%= f.input :constellation, required: true, collection: [
+            <%= f.input :constellation, required: true, collection:   array_of_constellations = [
               "Andromeda",
-              "Antlia",
-              "Apus",
-              "Aquarius",
-              "Aquila",
-              "Ara",
-              "Aries",
-              "Auriga",
-              "Boötes",
-              "Caelum",
-              "Camelopardalis",
-              "Cancer",
-              "Canes Venatici",
-              "Canis Major",
-              "Canis Minor",
-              "Capricornus",
-              "Carina",
               "Cassiopeia",
               "Centaurus",
-              "Cepheus",
               "Cetus",
-              "Chamaeleon",
               "Circinus",
-              "Columba",
-              "Coma Berenices",
-              "Corona Austrina",
-              "Corona Borealis",
-              "Corvus",
-              "Crater",
-              "Crux",
-              "Cygnus",
-              "Delphinus",
-              "Dorado",
-              "Draco",
-              "Equuleus",
-              "Eridanus",
-              "Fornax",
-              "Gemini",
-              "Grus",
-              "Hercules",
-              "Horologium",
-              "Hydra",
-              "Hydrus",
-              "Indus",
-              "Lacerta",
-              "Leo",
-              "Leo Minor",
-              "Lepus",
-              "Libra",
-              "Lupus",
-              "Lynx",
               "Lyra",
-              "Mensa",
               "Microscopium",
-              "Monoceros",
-              "Musca",
               "Norma",
               "Octans",
-              "Ophiuchus",
-              "Orion",
               "Pavo",
               "Pegasus",
-              "Perseus",
-              "Phoenix",
-              "Pictor",
-              "Pisces",
-              "Piscis Austrinus",
-              "Puppis",
-              "Pyxis",
-              "Reticulum",
-              "Sagitta",
-              "Sagittarius",
-              "Scorpius",
-              "Sculptor",
-              "Scutum",
-              "Serpens",
-              "Sextans",
-              "Taurus",
-              "Telescopium",
-              "Triangulum",
-              "Triangulum Australe",
               "Tucana",
               "Ursa Major",
-              "Ursa Minor",
-              "Vela",
               "Virgo",
               "Volans",
               "Vulpecula"] %>
-            <%= f.input :water, collection: (0..100).to_a %>
-            <%= f.input :breathability, collection: (0..100).to_a %>
-            <%= f.input :asteroid_attack, collection: (0..100).to_a %>
+              <div class="slidecontainer">
+                <%= f.input :water, input_html: {type: "range", min: "0", max: "100", class: "slider", id: "myWaterRange"} %>
+                <p style="color: white;">Water%: <span id="waterDemo"></span></p>
+              </div>
+              <div class="slidecontainer">
+                <%= f.input :breathability, input_html: {type: "range", min: "0", max: "100", class: "slider", id: "myBreathabilityRange"} %>
+                <p style="color: white;">Oxygen%: <span id="breathabilityDemo"></span></p>
+              </div>
+              <div class="slidecontainer">
+                <%= f.input :asteroid_attack, input_html: {type: "range", min: "0", max: "100", class: "slider", id: "myAsteroidAttackRange"} %>
+                <p style="color: white;">Probability of asteroid attack: <span id="myAsteroidAttackdemo"></span></p>
+              </div>
             <%= f.input :description, required: true %>
             <%= f.input :price_per_day, required: true %>
             <%= f.input :photos, as: :file, multiple: true %>

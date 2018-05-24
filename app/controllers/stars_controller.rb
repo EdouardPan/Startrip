@@ -7,12 +7,9 @@ class StarsController < ApplicationController
    @constellation = Star.all.map{ |star| star.constellation }.uniq
   end
 
-  # def new
-  # end
-
   def create
-
     @star = Star.new(star_params)
+    @star.coordinates(@star.constellation)
     authorize @star
     @star.user = current_user
     if @star.save
@@ -56,6 +53,18 @@ class StarsController < ApplicationController
   def search
     @stars = Star.where(constellation: params[:query][:constellation])
     authorize @stars
+
+
+    # @stars = Star.where.not(latitude: nil, longitude: nil) : cas des lat /lng nil à gérer ensuite
+
+    @markers = @stars.map do |star|
+      {
+        lat: star.latitude,
+        lng: star.longitude,
+        icon: ActionController::Base.helpers.asset_path("star.png"),
+        infoWindow: { content: render_to_string(partial: "/stars/map_box", locals: { star: star }) }
+      }
+    end
   end
 
   private
