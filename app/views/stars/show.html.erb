@@ -15,11 +15,13 @@
       <div class="description-content">
         <h3>More about <%= @star.name%> </h3>
         <p><%= @star.description%> </p>
-        <p><i class="fas fa-tint"> </i>Water: <%= @star.water%> %</p>
-        <p><i class="fas fa-leaf"> </i> Breathability: <%= @star.breathability%> %</p>
-        <p><i class="fas fa-star"> </i> Asteroid attack: <%= @star.asteroid_attack%> %</p>
-        <p><i class="fas fa-sun"> </i>Daylight: <%= @star.daylight%> %</p>
-        <p><i class="fas fa-heart"> </i>Life existence: <%= @star.life_existence%> </p>
+        <div class="criteria">
+          <div class="criteria-item"><i class="fas fa-tint"></i><p>Water</p><%= @star.water%> %</div>
+          <div class="criteria-item"><i class="fas fa-leaf"></i><p>Breathability</p><%= @star.breathability%> %</div>
+          <div class="criteria-item"><i class="fas fa-star"></i><p>Asteroid attack</p><%= @star.asteroid_attack%> %</div>
+          <div class="criteria-item"><i class="fas fa-sun"></i><p>Daylight</p><%= @star.daylight%> %</div>
+          <div class="criteria-item"><i class="fas fa-heart"></i><p>Life existence</p><%= @star.life_existence%> </div>
+        </div>
       </div>
     </div>
     <div class="form">
