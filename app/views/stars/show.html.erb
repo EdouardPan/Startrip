@@ -35,11 +35,13 @@
       <div class="description-content">
         <h3>More about <%= @star.name%> </h3>
         <p><%= @star.description%> </p>
-        <p><i class="fas fa-tint"> </i>Water: <%= @star.water%> %</p>
-        <p><i class="fas fa-leaf"> </i> Breathability: <%= @star.breathability%> %</p>
-        <p><i class="fas fa-star"> </i> Asteroid attack: <%= @star.asteroid_attack%> %</p>
-        <p><i class="fas fa-sun"> </i>Daylight: <%= @star.daylight%> %</p>
-        <p><i class="fas fa-heart"> </i>Life existence: <%= @star.life_existence%> </p>
+        <div class="criteria">
+          <div class="criteria-item"><i class="fas fa-tint"></i><p>Water</p><%= @star.water%> %</div>
+          <div class="criteria-item"><i class="fas fa-leaf"></i><p>Breathability</p><%= @star.breathability%> %</div>
+          <div class="criteria-item"><i class="fas fa-star"></i><p>Asteroid attack</p><%= @star.asteroid_attack%> %</div>
+          <div class="criteria-item"><i class="fas fa-sun"></i><p>Daylight</p><%= @star.daylight%> %</div>
+          <div class="criteria-item"><i class="fas fa-heart"></i><p>Life existence</p><%= @star.life_existence%> </div>
+        </div>
       </div>
     </div>
     <div class="form">
@@ -53,9 +55,31 @@
      </div>
     </div>
   </div>
+  <div class="review">
+    <div class="list-review">
+      <% if @star.star_reviews.empty? %>
+        No comment yet
+      <% else %>
+        <% @star.star_reviews.each do |review| %>
+          <div class="review-item">
+            <% 5.times do |i| %>
+              <i class="fas fa-star <%= 'yellow' if review.rating > i  %>"></i>
+            <% end %>
+            <%= review.comment %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="add-review">
+      <h2>Add a comment</h2>
+      <%= simple_form_for([@star, @review]) do |f| %>
+        <%= f.input :rating %>
+        <%= f.input :comment %>
+        <%= f.submit "Add review", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
 </div>
 <% end %>
-
-
 
 
