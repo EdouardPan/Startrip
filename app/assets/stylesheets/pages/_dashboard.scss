@@ -63,7 +63,6 @@
 
 
 
-
 #tab-pane {
   height: 100vh;
 }
@@ -88,4 +87,10 @@
 
 .cercle-avatar {
   border-radius: 50%;
+}
+
+.nav-pills {
+  li {
+  margin-top: 10px;
+  }
 }
