@@ -24,6 +24,7 @@
   &:focus {
     border-color: $space-pink;
     box-shadow: 0 0 5px rgba(98, 101, 228, 1) !important;
+    border-width: 5px;
   }
 }
 
@@ -44,21 +45,20 @@
   label {
     color: white;
     font-size: 16px;
-    font-weight: lighter;
   }
 }
 
 .btn-space-pink {
     background-color: $space-pink;
     color: white;
-    width: 100px;
+    width: 2;
   }
 
 .form-actions {
   .btn-space-pink {
     background-color: $space-pink;
     color: white;
-    width: 100px;
+    padding: 10px;
   }
 
 }

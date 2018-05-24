@@ -1,142 +1,198 @@
-<h1>My info</h1>
+<div class="wrapper">
 
 
-<p>username: <%=  @my_info.username %></p>
-<p>Species:
-<%if  @my_info.human == "true" %>
-  human
-  <% else %>
-  alien
-<% end %>
-</p>
-
-<h1>My bookings</h1>
-
-<% unless @my_bookings.nil? %>
-  <% @my_bookings.each do |booking| %>
-    <div>
-      <%= link_to booking.star.name, star_path(booking.star) %> - <%= booking.trip_price %> $
+  <div class="container-greetings">
+    <div class="container">
+      <h1>Hi <%=  @my_info.username %>!</h1>
+      <p>What would you like to see today?</p>
     </div>
-  <% end %>
-<% end %>
+  </div>
 
-<h1>My stars</h1>
+  <div class="container">
+      <div class="container-tabs">
+      <!-- Nav tabs -->
+      <ul class="nav nav-pills" role="tablist">
+        <li role="presentation" class="active"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">My info</a></li>
+        <li role="presentation"><a href="#bookings" aria-controls="bookings" role="tab" data-toggle="tab">My bookings</a></li>
+        <li role="presentation"><a href="#stars" aria-controls="stars" role="tab" data-toggle="tab">My stars</a></li>
 
-<% unless @my_stars.nil? %>
-  <ul>
-  <% @my_stars.each do |star| %>
-    <%= link_to star.name, star_path(star) %> - <%= star.constellation %>
-      <%= link_to star_path(star), method: :delete, data: {confirm: "Are you sure?"} do  %>
-      <i class="fas fa-trash-alt"></i>
-      <% end %>
-      <%= link_to edit_star_path(star) do  %>
-      <i class="fas fa-pencil-alt"></i>
-      <% end %>
-  <% end %>
-  </ul>
-<% end %>
+      </ul>
+    </div>
 
-<%= simple_form_for(@new_star) do |f| %>
-  <!-- The new star path is all we need. This is connected to @new_star-->
-  <%= f.input :name, required: true %>
-  <%= f.input :constellation, required: true, collection: [
-    "Andromeda",
-    "Antlia",
-    "Apus",
-    "Aquarius",
-    "Aquila",
-    "Ara",
-    "Aries",
-    "Auriga",
-    "Boötes",
-    "Caelum",
-    "Camelopardalis",
-    "Cancer",
-    "Canes Venatici",
-    "Canis Major",
-    "Canis Minor",
-    "Capricornus",
-    "Carina",
-    "Cassiopeia",
-    "Centaurus",
-    "Cepheus",
-    "Cetus",
-    "Chamaeleon",
-    "Circinus",
-    "Columba",
-    "Coma Berenices",
-    "Corona Austrina",
-    "Corona Borealis",
-    "Corvus",
-    "Crater",
-    "Crux",
-    "Cygnus",
-    "Delphinus",
-    "Dorado",
-    "Draco",
-    "Equuleus",
-    "Eridanus",
-    "Fornax",
-    "Gemini",
-    "Grus",
-    "Hercules",
-    "Horologium",
-    "Hydra",
-    "Hydrus",
-    "Indus",
-    "Lacerta",
-    "Leo",
-    "Leo Minor",
-    "Lepus",
-    "Libra",
-    "Lupus",
-    "Lynx",
-    "Lyra",
-    "Mensa",
-    "Microscopium",
-    "Monoceros",
-    "Musca",
-    "Norma",
-    "Octans",
-    "Ophiuchus",
-    "Orion",
-    "Pavo",
-    "Pegasus",
-    "Perseus",
-    "Phoenix",
-    "Pictor",
-    "Pisces",
-    "Piscis Austrinus",
-    "Puppis",
-    "Pyxis",
-    "Reticulum",
-    "Sagitta",
-    "Sagittarius",
-    "Scorpius",
-    "Sculptor",
-    "Scutum",
-    "Serpens",
-    "Sextans",
-    "Taurus",
-    "Telescopium",
-    "Triangulum",
-    "Triangulum Australe",
-    "Tucana",
-    "Ursa Major",
-    "Ursa Minor",
-    "Vela",
-    "Virgo",
-    "Volans",
-    "Vulpecula"] %>
-  <%= f.input :water, collection: (0..100).to_a %>
-  <%= f.input :breathability, collection: (0..100).to_a %>
-  <%= f.input :asteroid_attack, collection: (0..100).to_a %>
-  <%= f.input :description, required: true %>
-  <%= f.input :price_per_day, required: true %>
-  <%= f.input :photos, as: :file, multiple: true %>
-  <%= f.input :photos_cache, as: :hidden %>
-  <%= f.button :submit, class: "btn btn-primary" %>
-<% end %>
+    <!-- Tab panes -->
+  <div class="container">
+    <div class="tab-content text-center">
+      <div role="tabpanel" class="tab-pane active" id="info">
+        <div class="tab-title">
+          <h1>My info</h1>
+        </div>
+        <p>username: <%=  @my_info.username %></p>
+        <p>Species:
+        <%if  @my_info.human == true %>
+          human
+          <% else %>
+          alien
+        <% end %>
+        </p>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="bookings">
+        <h1>My bookings</h1>
+
+        <% unless @my_bookings.nil? %>
+          <% @my_bookings.each do |booking| %>
+            <div>
+              <%= link_to booking.star.name, star_path(booking.star) %> - <%= booking.trip_price %> $
+            </div>
+          <% end %>
+        <% end %>
+
+
+      </div>
+      <div role="tabpanel" class="tab-pane" id="stars">
+        <h1>My stars</h1>
+
+         <% unless @my_stars.nil? %>
+           <ul>
+           <% @my_stars.each do |star| %>
+             <%= link_to star.name, star_path(star) %> - <%= star.constellation %>
+                <%= link_to star_path(star), method: :delete, data: {confirm: "Are you sure?"} do  %>
+                  <i class="fas fa-trash-alt"></i>
+                <% end %>
+                <%= link_to edit_star_path(star) do  %>
+                  <i class="fas fa-pencil-alt"></i>
+                <% end %>
+              <% end %>
+
+          </ul>
+         <% end %>
+
+
+        <div class="star-form ">
+          <div class="tab-title text-center">
+            <h1>Add your star for rent</h1>
+          </div>
+
+          <%= simple_form_for(@new_star) do |f| %>
+            <!-- The new star path is all we need. This is connected to @new_star-->
+            <div class="form-inputs form-group text-center">
+            <%= f.input :name, required: true %>
+            <%= f.input :constellation, required: true, collection: [
+              "Andromeda",
+              "Antlia",
+              "Apus",
+              "Aquarius",
+              "Aquila",
+              "Ara",
+              "Aries",
+              "Auriga",
+              "Boötes",
+              "Caelum",
+              "Camelopardalis",
+              "Cancer",
+              "Canes Venatici",
+              "Canis Major",
+              "Canis Minor",
+              "Capricornus",
+              "Carina",
+              "Cassiopeia",
+              "Centaurus",
+              "Cepheus",
+              "Cetus",
+              "Chamaeleon",
+              "Circinus",
+              "Columba",
+              "Coma Berenices",
+              "Corona Austrina",
+              "Corona Borealis",
+              "Corvus",
+              "Crater",
+              "Crux",
+              "Cygnus",
+              "Delphinus",
+              "Dorado",
+              "Draco",
+              "Equuleus",
+              "Eridanus",
+              "Fornax",
+              "Gemini",
+              "Grus",
+              "Hercules",
+              "Horologium",
+              "Hydra",
+              "Hydrus",
+              "Indus",
+              "Lacerta",
+              "Leo",
+              "Leo Minor",
+              "Lepus",
+              "Libra",
+              "Lupus",
+              "Lynx",
+              "Lyra",
+              "Mensa",
+              "Microscopium",
+              "Monoceros",
+              "Musca",
+              "Norma",
+              "Octans",
+              "Ophiuchus",
+              "Orion",
+              "Pavo",
+              "Pegasus",
+              "Perseus",
+              "Phoenix",
+              "Pictor",
+              "Pisces",
+              "Piscis Austrinus",
+              "Puppis",
+              "Pyxis",
+              "Reticulum",
+              "Sagitta",
+              "Sagittarius",
+              "Scorpius",
+              "Sculptor",
+              "Scutum",
+              "Serpens",
+              "Sextans",
+              "Taurus",
+              "Telescopium",
+              "Triangulum",
+              "Triangulum Australe",
+              "Tucana",
+              "Ursa Major",
+              "Ursa Minor",
+              "Vela",
+              "Virgo",
+              "Volans",
+              "Vulpecula"] %>
+            <%= f.input :water, collection: (0..100).to_a %>
+            <%= f.input :breathability, collection: (0..100).to_a %>
+            <%= f.input :asteroid_attack, collection: (0..100).to_a %>
+            <%= f.input :description, required: true %>
+            <%= f.input :price_per_day, required: true %>
+            <%= f.input :photos, as: :file, multiple: true %>
+            <%= f.input :photos_cache, as: :hidden %>
+            </div>
+            <div class="form-actions form-group text-center">
+              <%= f.button :submit, class: "btn btn-space-pink" %>
+            </div>
+          <% end %>
+        </div>
+
+
+
+        </div>
+        <div role="tabpanel" class="tab-pane" id="settings">...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
 
 
 
