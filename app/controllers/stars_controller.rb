@@ -52,6 +52,17 @@ class StarsController < ApplicationController
   def search
     @stars = Star.where(constellation: params[:query][:constellation])
     authorize @stars
+
+
+    # @stars = Star.where.not(latitude: nil, longitude: nil) : cas des lat /lng nil à gérer ensuite
+
+    @markers = @stars.map do |star|
+      {
+        lat: star.latitude,
+        lng: star.longitude#,
+        # infoWindow: { content: render_to_string(partial: "/stars/map_box", locals: { star: star }) }
+      }
+    end
   end
 
   private
