@@ -1,12 +1,27 @@
-function PrettySlider(range, demo) {
-  var slider = document.getElementById(range);
-  var output = document.getElementById(demo);
-  output.innerHTML = slider.value; // Display the default slider value
+
+var slider1 = document.getElementById("myWaterRange");
+var output1 = document.getElementById("waterDemo");
+output1.innerHTML = slider1.value; // Display the default slider value
 
   // Update the current slider value (each time you drag the slider handle)
-  slider.oninput = function() {
-      output.innerHTML = this.value;
+  slider1.oninput = function PrettySlider() {
+      output1.innerHTML = this.value;
   }
-}
 
-export { PrettySlider };
+var slider2 = document.getElementById("myBreathabilityRange");
+var output2 = document.getElementById("breathabilityDemo");
+output2.innerHTML = slider2.value; // Display the default slider value
+
+  // Update the current slider value (each time you drag the slider handle)
+  slider2.oninput = function PrettySlider() {
+      output2.innerHTML = this.value;
+  }
+
+var slider3 = document.getElementById("myAsteroidAttackRange");
+var output3 = document.getElementById("myAsteroidAttackdemo");
+output3.innerHTML = slider3.value; // Display the default slider value
+
+  // Update the current slider value (each time you drag the slider handle)
+  slider3.oninput = function PrettySlider() {
+      output3.innerHTML = this.value;
+  }

@@ -11,7 +11,6 @@ class StarsController < ApplicationController
   # end
 
   def create
-
     @star = Star.new(star_params)
     authorize @star
     @star.user = current_user

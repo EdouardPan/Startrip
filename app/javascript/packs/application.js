@@ -7,8 +7,5 @@ import { PrettySlider } from '../components/slider';
 
 loadDynamicBannerText();
 initUpdateNavbarOnScroll();
-PrettySlider("myWaterRange", "waterDemo");
-PrettySlider("myBreathabilityRange", "breathabilityDemo");
-PrettySlider("myAsteroidAttackRange", "myAsteroidAttackdemo")
 
 
