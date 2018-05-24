@@ -4,21 +4,22 @@ class StarsController < ApplicationController
 
   def index
    @stars = policy_scope(Star)
-   @constellation = Star.all.map{ |star| star.constellation }
+   @constellation = Star.all.map{ |star| star.constellation }.uniq
   end
 
-  # def new
-  # end
-
   def create
-
     @star = Star.new(star_params)
+    @star.coordinates(@star.constellation)
     authorize @star
     @star.user = current_user
-    if @star.save!
+    if @star.save
       redirect_to profile_path
     else
-      render :new
+      @my_info = current_user
+      @my_bookings = current_user.bookings
+      @my_stars = current_user.stars
+      @new_star = @star
+      render 'profiles/dashboard'
     end
   end
 
@@ -52,6 +53,18 @@ class StarsController < ApplicationController
   def search
     @stars = Star.where(constellation: params[:query][:constellation])
     authorize @stars
+
+
+    # @stars = Star.where.not(latitude: nil, longitude: nil) : cas des lat /lng nil à gérer ensuite
+
+    @markers = @stars.map do |star|
+      {
+        lat: star.latitude,
+        lng: star.longitude,
+        icon: ActionController::Base.helpers.asset_path("star.png"),
+        infoWindow: { content: render_to_string(partial: "/stars/map_box", locals: { star: star }) }
+      }
+    end
   end
 
   private

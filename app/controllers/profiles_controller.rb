@@ -10,6 +10,7 @@ class ProfilesController < ApplicationController
     @new_star = Star.new
     @tab = params[:tab]
 
+    @my_booked_stars = Booking.joins(:star).where(stars: {user: current_user}).where("departure_date >= ?", Date.today )
 
     # Link to delete/cancel a booking
 
