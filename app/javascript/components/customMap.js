@@ -1,4 +1,4 @@
-const starMap = [
+export const starMap = [
     {
         "featureType": "all",
         "elementType": "labels.text.fill",
@@ -297,3 +297,5 @@ const starMap = [
         ]
     }
 ]
+
+
