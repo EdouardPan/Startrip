@@ -165,7 +165,10 @@
               "Virgo",
               "Volans",
               "Vulpecula"] %>
-            <%= f.input :water, collection: (0..100).to_a %>
+              <div class="slidecontainer">
+                <%= f.input :water, input_html: {type: "range", min: "0", max: "100", class: "slider", id: "myRange"} %>
+              </div>
+
             <%= f.input :breathability, collection: (0..100).to_a %>
             <%= f.input :asteroid_attack, collection: (0..100).to_a %>
             <%= f.input :description, required: true %>
@@ -178,7 +181,6 @@
             </div>
           <% end %>
         </div>
-
 
 
         </div>
