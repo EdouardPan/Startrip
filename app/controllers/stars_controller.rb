@@ -47,6 +47,7 @@ class StarsController < ApplicationController
   def show
     authorize @star
     @booking = Booking.new
+    @review = StarReview.new
   end
 
   def search

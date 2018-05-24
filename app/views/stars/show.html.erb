@@ -35,8 +35,30 @@
      </div>
     </div>
   </div>
+  <div class="review">
+    <div class="list-review">
+      <% if @star.star_reviews.empty? %>
+        No comment yet
+      <% else %>
+        <% @star.star_reviews.each do |review| %>
+          <div class="review-item">
+            <% 5.times do |i| %>
+              <i class="fas fa-star <%= 'yellow' if review.rating > i  %>"></i>
+            <% end %>
+            <%= review.comment %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="add-review">
+      <h2>Add a comment</h2>
+      <%= simple_form_for([@star, @review]) do |f| %>
+        <%= f.input :rating %>
+        <%= f.input :comment %>
+        <%= f.submit "Add review", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
 </div>
-
-
 
 

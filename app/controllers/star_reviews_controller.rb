@@ -8,6 +8,8 @@ class StarReviewsController < ApplicationController
       redirect_to star_path(@star)
     else
       # Add instance variable of the stars#show once the controller stars finished
+      @booking = Booking.new
+      @review = @star_review
       render 'stars/show'
     end
   end
