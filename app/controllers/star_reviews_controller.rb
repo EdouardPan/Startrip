@@ -3,6 +3,7 @@ class StarReviewsController < ApplicationController
   def create
     @star = Star.find(params[:star_id])
     @star_review = StarReview.new(starreview_params)
+    authorize @star_review
     @star_review.star = @star
     if @star_review.save
       redirect_to star_path(@star)
