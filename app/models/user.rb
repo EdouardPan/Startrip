@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :stars, dependent: :destroy
   has_many :star_reviews, dependent: :destroy
 
+  mount_uploader :avatar, PhotoUploader
+
   validates :username, presence: true, uniqueness: true
   validates :human, :inclusion => { :in => [true, false] }
 
