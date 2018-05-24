@@ -1,12 +1,18 @@
 <div class="wrapper wrapper-dashboard">
-<div class="wrapper">
 
-  <div class="container-greetings">
-    <div class="container">
-      <h1>Hi <%=  @my_info.username %>!</h1>
-      <p>What would you like to see today?</p>
+
+  <div class="wrapper">
+
+    <div class="container-greetings">
+      <div class="container">
+        <h1>Hi <%=  @my_info.username %>!</h1>
+        <p>What would you like to see today?</p>
+      </div>
     </div>
+
   </div>
+
+
 
   <div class="container">
     <div class="row">
@@ -22,17 +28,19 @@
     </div>
   </div>
 
+
     <!-- Tab panes -->
   <div class="container">
     <div class="tab-content text-center">
 
+
+      <!-- My info tab -->
+
       <div role="tabpanel" class="tab-pane <%= 'active' if @tab == "info" %>" id="info">
         <div class="container container-info">
           <h1>My info</h1>
-
           <%= cl_image_tag(@my_info.avatar, width: 150, height: 150, crop: :thumb, gravity: :face, class: 'cercle-avatar') %>
-
-          <p>username: <%=  @my_info.username %></p>
+          <p>Username: <%=  @my_info.username %></p>
           <p>Species:
           <%if  @my_info.human == true %>
             human
@@ -40,42 +48,46 @@
             alien
           <% end %>
           </p>
-
-          <%= link_to edit_user_registration_path do  %>
-            <p>Edit your profile</p>
-          <% end %>
-
+          <div class="edit-link">
+            <%= link_to edit_user_registration_path do  %>
+              <p>(Edit your profile)</p>
+            <% end %>
+          </div>
         </div>
       </div>
 
 
+      <!-- My bookings tab -->
+
+
 
       <div role="tabpanel" class="tab-pane <%= 'active' if @tab == "bookings" %>" id="bookings">
-        <h1>My bookings</h1>
+        <div class="container container-bookings">
 
-        <div class="container">
-          <div class="current-bookings text-center">
-            <h3>Your current trips</h3>
-            <div class="current-bookings-cards">
-              <% if @current_bookings.empty? %>
-                <p>You have no current trips planned.</p>
-              <% else %>
-                <% @current_bookings.each do |booking| %>
-                  <div class="col-xs-4">
-                    <%= render 'shared/card', object: booking.star %>
-                    <%= link_to star_booking_path(booking.star, booking), method: :delete, data: {confirm: "Are you sure?"} do  %>
-                      <p>Delete this booking</p>
-                    <% end %>
-                  </div>
+          <div class="container">
+            <div class="current-bookings text-center">
+              <h1>Your current trips</h1>
+              <div class="current-bookings-cards">
+                <% if @current_bookings.empty? %>
+                  <p>You have no current trips planned.</p>
+                <% else %>
+                  <% @current_bookings.each do |booking| %>
+                    <div class="col-xs-4">
+                      <%= render 'shared/card', object: booking.star %>
+                      <%= link_to star_booking_path(booking.star, booking), method: :delete, data: {confirm: "Are you sure?"} do  %>
+                        <p>Delete this booking</p>
+                      <% end %>
+                    </div>
+                  <% end %>
                 <% end %>
-              <% end %>
+              </div>
             </div>
           </div>
-        </div>
+
 
         <div class="container">
           <div class="next-bookings">
-            <h3>Your next trips</h3>
+            <h1>Your next trips</h1>
             <div class="next-bookings-cards">
               <% if @next_bookings.empty? %>
                 <p>You have no future trips planned.</p>
@@ -95,7 +107,7 @@
 
         <div class="container">
           <div class="past-bookings">
-            <h3>Your past trips</h3>
+            <h1>Your past trips</h1>
             <div class="past-bookings-cards">
               <% if @past_bookings.empty? %>
                 <p>You have no future trips planned.</p>
@@ -109,11 +121,24 @@
             </div>
           </div>
         </div>
+
+
+
       </div>
 
-      <div role="tabpanel" class="tab-pane <%= 'active' if @tab == "stars" %>" id="stars">
+
+      </div>
+
+
+
+
+
+      <div role="tabpanel" class="tab-pane <%= 'active' if @tab == "new_stars" %>" id="stars">
+
+
+
         <div class="container">
-          <div class="container-index">
+          <div class="stars-list">
             <div class="row">
               <h1>My stars</h1>
                 <% unless @my_stars.nil? %>
@@ -137,9 +162,8 @@
         <div class="container">
           <div class="booked-stars">
             <h1>My booked stars</h1>
-            <div class="container">
-              <div class="container-index">
-                <div class="row">
+            <div class="booked-stars-cards">
+
                   <% if @my_booked_stars.empty? %>
                     <p>None of your stars are currently rented.</p>
                   <% else %>
@@ -151,12 +175,18 @@
                     </div>
                     <% end %>
                   <% end %>
-                </div>
-              </div>
+
+
             </div>
           </div>
         </div>
+
+
+
+
+
       </div>
+
 
       <div role="tabpanel" class="tab-pane" id="newstar">
         <div class="star-form ">
@@ -187,15 +217,15 @@
               "Vulpecula"] %>
               <div class="slidecontainer">
                 <%= f.input :water, input_html: {type: "range", min: "0", max: "100", class: "slider", id: "myWaterRange"} %>
-                <p style="color: white;">Water%: <span id="waterDemo"></span></p>
+                <p style="color: $gray;">Water%: <span id="waterDemo"></span></p>
               </div>
               <div class="slidecontainer">
                 <%= f.input :breathability, input_html: {type: "range", min: "0", max: "100", class: "slider", id: "myBreathabilityRange"} %>
-                <p style="color: white;">Oxygen%: <span id="breathabilityDemo"></span></p>
+                <p style="color: $gray;">Oxygen%: <span id="breathabilityDemo"></span></p>
               </div>
               <div class="slidecontainer">
                 <%= f.input :asteroid_attack, input_html: {type: "range", min: "0", max: "100", class: "slider", id: "myAsteroidAttackRange"} %>
-                <p style="color: white;">Probability of asteroid attack: <span id="myAsteroidAttackdemo"></span></p>
+                <p style="color: $gray;">Probability of asteroid attack: <span id="myAsteroidAttackdemo"></span></p>
               </div>
             <%= f.input :description, required: true %>
             <%= f.input :price_per_day, required: true %>
@@ -213,8 +243,22 @@
 
         </div>
       </div>
+
+
+
+
+
     </div>
+
+
+
+
   </div>
+
+
+
+
+
 </div>
 
 
