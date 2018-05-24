@@ -1,4 +1,4 @@
-<div class="wrapper wrapper-form">
+<div class="wrapper wrapper-form wrapper-login">
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
@@ -8,10 +8,11 @@
           <div class="form-inputs form-group text-center">
             <%= f.input :email, required: false, autofocus: true %>
             <%= f.input :password, required: false %>
-            <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+            <%= f.label :remember_me, "Remember me" %>
+            <%= f.check_box :remember_me, as: :boolean if devise_mapping.rememberable? %>
           </div>
           <div class="form-actions form-group text-center">
-            <%= f.button :submit, "Log in", class: "form-control btn btn-space-pink text-center" %>
+            <%= f.button :submit, "Log in", class: "form-actions btn btn-space-pink text-center" %>
           </div>
         <% end %>
 
