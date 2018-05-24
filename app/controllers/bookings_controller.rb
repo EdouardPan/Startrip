@@ -10,7 +10,7 @@ class BookingsController < ApplicationController
     @booking.user = @user
     @booking.trip_price = @booking.total_price
     if @booking.save
-      redirect_to profile_path
+      redirect_to profile_path(tab: "bookings")
     else
       render 'stars/show'
     end
@@ -20,7 +20,7 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     authorize @booking
     @booking.destroy
-    redirect_to profile_path
+    redirect_to profile_path(tab: "bookings")
   end
 
   private

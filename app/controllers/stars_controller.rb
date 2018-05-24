@@ -13,7 +13,7 @@ class StarsController < ApplicationController
     authorize @star
     @star.user = current_user
     if @star.save
-      redirect_to profile_path
+      redirect_to profile_path(tab: "stars")
     else
       @my_info = current_user
       @my_bookings = current_user.bookings
@@ -33,7 +33,7 @@ class StarsController < ApplicationController
   def update
     authorize @star
     if @star.update(star_params)
-      redirect_to profile_path
+      redirect_to profile_path(tab: "stars")
     else
       render :edit
     end
@@ -42,7 +42,7 @@ class StarsController < ApplicationController
   def destroy
     authorize @star
     @star.destroy
-    redirect_to profile_path
+    redirect_to profile_path(tab: "stars")
   end
 
   def show
