@@ -1,4 +1,5 @@
 class ProfilesController < ApplicationController
+
   def dashboard
     authorize :profile, :dashboard?
     #--- Renting a star
@@ -7,6 +8,7 @@ class ProfilesController < ApplicationController
     @my_bookings = current_user.bookings
     @my_stars = current_user.stars
     @new_star = Star.new
+    @tab = params[:tab]
 
     # Link to delete/cancel a booking
 

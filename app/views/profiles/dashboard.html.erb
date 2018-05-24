@@ -11,9 +11,9 @@
       <div class="container-tabs">
       <!-- Nav tabs -->
       <ul class="nav nav-pills" role="tablist">
-        <li role="presentation" class="active"><a href="#info" aria-controls="info" role="tab" data-toggle="tab">My info</a></li>
-        <li role="presentation"><a href="#bookings" aria-controls="bookings" role="tab" data-toggle="tab">My bookings</a></li>
-        <li role="presentation"><a href="#stars" aria-controls="stars" role="tab" data-toggle="tab">My stars</a></li>
+        <li role="presentation" <%= "class=active" if @tab == "info" %> ><a href="#info" aria-controls="info" role="tab" data-toggle="tab">My info</a></li>
+        <li role="presentation" class="<%= 'active' if @tab == "bookings" %>" ><a href="#bookings" aria-controls="bookings" role="tab" data-toggle="tab">My bookings</a></li>
+        <li role="presentation" <%= "class=active" if @tab == "stars" %>><a href="#stars" aria-controls="stars" role="tab" data-toggle="tab">My stars</a></li>
 
       </ul>
     </div>
@@ -21,7 +21,7 @@
     <!-- Tab panes -->
   <div class="container">
     <div class="tab-content text-center">
-      <div role="tabpanel" class="tab-pane active" id="info">
+      <div role="tabpanel" class="tab-pane <%= 'active' if @tab == "info" %>" id="info">
         <div class="tab-title">
           <h1>My info</h1>
         </div>
@@ -34,20 +34,36 @@
         <% end %>
         </p>
       </div>
-      <div role="tabpanel" class="tab-pane" id="bookings">
+
+
+
+      <div role="tabpanel" class="tab-pane <%= 'active' if @tab == "bookings" %>" id="bookings">
         <h1>My bookings</h1>
+
+        <div class="current-bookings">
+          <h3>Your current trips</h3>
+        </div>
+
+        <div class="next-bookings">
+          <h3>Your next trips</h3>
+        </div>
+
+        <div class="past-bookings">
+          <h3>Your past trips</h3>
+        </div>
 
         <% unless @my_bookings.nil? %>
           <% @my_bookings.each do |booking| %>
-            <div>
-              <%= link_to booking.star.name, star_path(booking.star) %> - <%= booking.trip_price %> $
+            <div class="col-xs-4">
+              <%= render 'shared/card', object: booking.star %>
             </div>
           <% end %>
         <% end %>
 
 
       </div>
-      <div role="tabpanel" class="tab-pane" id="stars">
+
+      <div role="tabpanel" class="tab-pane <%= 'active' if @tab == "stars" %>" id="stars">
         <h1>My stars</h1>
 
          <% unless @my_stars.nil? %>
@@ -66,7 +82,7 @@
          <% end %>
 
 
-        <div class="star-form ">
+        <div class="star-form">
           <div class="tab-title text-center">
             <h1>Add your star for rent</h1>
           </div>
