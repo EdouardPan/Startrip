@@ -1,100 +1,45 @@
-<%= simple_form_for(@star) do |f| %>
-  <%= f.input :name, required: true %>
-  <%= f.input :constellation, required: true, collection: [
-    "Andromeda",
-    "Antlia",
-    "Apus",
-    "Aquarius",
-    "Aquila",
-    "Ara",
-    "Aries",
-    "Auriga",
-    "Boötes",
-    "Caelum",
-    "Camelopardalis",
-    "Cancer",
-    "Canes Venatici",
-    "Canis Major",
-    "Canis Minor",
-    "Capricornus",
-    "Carina",
-    "Cassiopeia",
-    "Centaurus",
-    "Cepheus",
-    "Cetus",
-    "Chamaeleon",
-    "Circinus",
-    "Columba",
-    "Coma Berenices",
-    "Corona Austrina",
-    "Corona Borealis",
-    "Corvus",
-    "Crater",
-    "Crux",
-    "Cygnus",
-    "Delphinus",
-    "Dorado",
-    "Draco",
-    "Equuleus",
-    "Eridanus",
-    "Fornax",
-    "Gemini",
-    "Grus",
-    "Hercules",
-    "Horologium",
-    "Hydra",
-    "Hydrus",
-    "Indus",
-    "Lacerta",
-    "Leo",
-    "Leo Minor",
-    "Lepus",
-    "Libra",
-    "Lupus",
-    "Lynx",
-    "Lyra",
-    "Mensa",
-    "Microscopium",
-    "Monoceros",
-    "Musca",
-    "Norma",
-    "Octans",
-    "Ophiuchus",
-    "Orion",
-    "Pavo",
-    "Pegasus",
-    "Perseus",
-    "Phoenix",
-    "Pictor",
-    "Pisces",
-    "Piscis Austrinus",
-    "Puppis",
-    "Pyxis",
-    "Reticulum",
-    "Sagitta",
-    "Sagittarius",
-    "Scorpius",
-    "Sculptor",
-    "Scutum",
-    "Serpens",
-    "Sextans",
-    "Taurus",
-    "Telescopium",
-    "Triangulum",
-    "Triangulum Australe",
-    "Tucana",
-    "Ursa Major",
-    "Ursa Minor",
-    "Vela",
-    "Virgo",
-    "Volans",
-    "Vulpecula"] %>
-  <%= f.input :water, collection: (0..100).to_a %>
-  <%= f.input :breathability, collection: (0..100).to_a %>
-  <%= f.input :asteroid_attack, collection: (0..100).to_a %>
-  <%= f.input :description, required: true %>
-  <%= f.input :price_per_day, required: true %>
-  <%= f.input :photos, as: :file, multiple: true %>
-  <%= f.input :photos_cache, as: :hidden %>
-  <%= f.button :submit, class: "btn btn-primary" %>
-<% end %>
+     <%= simple_form_for(@star) do |f| %>
+            <!-- The new star path is all we need. This is connected to @new_star-->
+            <div class="row">
+              <div class="col-md-6 col-md-offset-3 ">
+                <div class="form-inputs form-group text-center">
+                <%= f.input :name, required: true %>
+                <%= f.input :constellation, required: true, collection:   array_of_constellations = [
+                  "Andromeda",
+                  "Cassiopeia",
+                  "Centaurus",
+                  "Cetus",
+                  "Circinus",
+                  "Lyra",
+                  "Microscopium",
+                  "Norma",
+                  "Octans",
+                  "Pavo",
+                  "Pegasus",
+                  "Tucana",
+                  "Ursa Major",
+                  "Virgo",
+                  "Volans",
+                  "Vulpecula"] %>
+                  <div class="slidecontainer">
+                    <%= f.input :water, input_html: {type: "range", min: "0", max: "100", class: "slider", id: "myWaterRange"} %>
+                    <p style="color: $gray;">Water%: <span id="waterDemo"></span></p>
+                  </div>
+                  <div class="slidecontainer">
+                    <%= f.input :breathability, input_html: {type: "range", min: "0", max: "100", class: "slider", id: "myBreathabilityRange"} %>
+                    <p style="color: $gray;">Oxygen%: <span id="breathabilityDemo"></span></p>
+                  </div>
+                  <div class="slidecontainer">
+                    <%= f.input :asteroid_attack, input_html: {type: "range", min: "0", max: "100", class: "slider", id: "myAsteroidAttackRange"} %>
+                    <p style="color: $gray;">Probability of asteroid attack: <span id="myAsteroidAttackdemo"></span></p>
+                  </div>
+                <%= f.input :description, required: true %>
+                <%= f.input :price_per_day, required: true %>
+                <%= f.input :photos, as: :file, multiple: true %>
+                <%= f.input :photos_cache, as: :hidden %>
+                <div class="form-actions form-group text-center">
+                  <%= f.button :submit, class: "btn btn-space-pink" %>
+                </div>
+              </div>
+            </div>
+          <% end %>
