@@ -93,7 +93,7 @@
                 <% @next_bookings.each do |booking| %>
                   <div class="col-xs-4">
                     <%= render 'shared/card', object: booking.star %>
-                    <p class="date-content"> From <%= booking.arrival_date%> to <%= booking.departure_date %> </p>
+                    <p class="date-content"> From <%= booking.arrival_date%> to <%= booking.departure_date %> <br> rented to you by <%= booking.star.user.username %>  </p>
                     <%= link_to "Delete this booking", star_booking_path(booking.star, booking), class: "black-link", method: :delete, data: {confirm: "Are you sure?"} %>
                   </div>
                 <% end %>
@@ -164,8 +164,7 @@
                       <%@my_booked_stars.each do |booking| %>
                       <div class="col-xs-4">
                         <%= render 'shared/card', object: booking.star %>
-                        <p class="date-content"> From <%= booking.arrival_date%> to <%= booking.departure_date %> </p>
-                        <p> by <%= booking.user.username %> </p>
+                        <p class="date-content"> From <%= booking.arrival_date%> to <%= booking.departure_date %> <br> rented to <%= booking.user.username %> </p>
                       </div>
                       <% end %>
                     <% end %>

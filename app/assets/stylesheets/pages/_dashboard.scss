@@ -32,14 +32,22 @@
 }
 
 .black-link {
-  color: black;
-  font-size: 15px;
+  color: $gray;
+  font-size: 12px;
+  &:hover {
+    text-decoration: none;
+    color: $space-pink;
+  }
 }
 
 .date-content {
   font-size: 15px;
+  color: black;
 }
 
+.user-card-text {
+  color: $space-pink;
+}
 
 
 #tab-pane {
