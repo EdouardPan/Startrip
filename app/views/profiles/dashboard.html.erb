@@ -74,9 +74,7 @@
                   <% @current_bookings.each do |booking| %>
                     <div class="col-xs-4">
                       <%= render 'shared/card', object: booking.star %>
-                      <%= link_to star_booking_path(booking.star, booking), method: :delete, data: {confirm: "Are you sure?"} do  %>
-                        <p>Delete this booking</p>
-                      <% end %>
+                      <%= link_to "Delete this booking", star_booking_path(booking.star, booking), class: "black-link", method: :delete, data: {confirm: "Are you sure?"} %>
                     </div>
                   <% end %>
                 <% end %>
@@ -95,9 +93,8 @@
                 <% @next_bookings.each do |booking| %>
                   <div class="col-xs-4">
                     <%= render 'shared/card', object: booking.star %>
-                    <%= link_to star_booking_path(booking.star, booking), method: :delete, data: {confirm: "Are you sure?"} do  %>
-                      <p>Delete this booking</p>
-                    <% end %>
+                    <p class="date-content"> From <%= booking.arrival_date%> to <%= booking.departure_date %> <br> rented to you by <%= booking.star.user.username %>  </p>
+                    <%= link_to "Delete this booking", star_booking_path(booking.star, booking), class: "black-link", method: :delete, data: {confirm: "Are you sure?"} %>
                   </div>
                 <% end %>
               <% end %>
@@ -145,13 +142,9 @@
                   <% @my_stars.each do |star| %>
                     <div class="col-xs-4">
                       <%= render 'shared/card', object: star %>
-                      <%= link_to star.name, star_path(star) %> - <%= star.constellation %>
-                      <%= link_to star_path(star), method: :delete, data: {confirm: "Are you sure?"} do  %>
-                      <i class="fas fa-trash-alt"></i>
-                      <% end %>
-                      <%= link_to edit_star_path(star) do  %>
-                      <i class="fas fa-pencil-alt"></i>
-                      <% end %>
+                      <%= link_to "Edit your star", edit_star_path(star), class: "black-link" %>
+                      <br>
+                      <%= link_to "Delete your star", star_path(star), class: "black-link", method: :delete, data: {confirm: "Are you sure?"} %>
                     </div>
                   <% end %>
                 <% end %>
@@ -161,22 +154,23 @@
 
         <div class="container">
           <div class="booked-stars">
-            <h1>My booked stars</h1>
-            <div class="booked-stars-cards">
+            <div class="row">
+              <h1>My booked stars</h1>
+              <div class="booked-stars-cards">
 
-                  <% if @my_booked_stars.empty? %>
-                    <p>None of your stars are currently rented.</p>
-                  <% else %>
-                    <%@my_booked_stars.each do |booking| %>
-                    <div class="col-xs-4">
-                      <%= render 'shared/card', object: booking.star %>
-                      <p> From <%= booking.arrival_date%> to <%= booking.arrival_date %> </p>
-                      <p> by <%= booking.user.username %> </p>
-                    </div>
+                    <% if @my_booked_stars.empty? %>
+                      <p>None of your stars are currently rented.</p>
+                    <% else %>
+                      <%@my_booked_stars.each do |booking| %>
+                      <div class="col-xs-4">
+                        <%= render 'shared/card', object: booking.star %>
+                        <p class="date-content"> From <%= booking.arrival_date%> to <%= booking.departure_date %> <br> rented to <%= booking.user.username %> </p>
+                      </div>
+                      <% end %>
                     <% end %>
-                  <% end %>
 
 
+              </div>
             </div>
           </div>
         </div>
@@ -189,50 +183,53 @@
 
 
       <div role="tabpanel" class="tab-pane" id="newstar">
-        <div class="star-form ">
+        <div class="star-form">
           <div class="tab-title text-center">
             <h1>Add your star to rent</h1>
           </div>
           <%= simple_form_for(@new_star) do |f| %>
             <!-- The new star path is all we need. This is connected to @new_star-->
-            <div class="form-inputs form-group text-center">
-            <%= f.input :name, required: true %>
-            <%= f.input :constellation, required: true, collection:   array_of_constellations = [
-              "Andromeda",
-              "Cassiopeia",
-              "Centaurus",
-              "Cetus",
-              "Circinus",
-              "Lyra",
-              "Microscopium",
-              "Norma",
-              "Octans",
-              "Pavo",
-              "Pegasus",
-              "Tucana",
-              "Ursa Major",
-              "Virgo",
-              "Volans",
-              "Vulpecula"] %>
-              <div class="slidecontainer">
-                <%= f.input :water, input_html: {type: "range", min: "0", max: "100", class: "slider", id: "myWaterRange"} %>
-                <p style="color: $gray;">Water%: <span id="waterDemo"></span></p>
+            <div class="row">
+              <div class="col-md-6 col-md-offset-3 ">
+                <div class="form-inputs form-group text-center">
+                <%= f.input :name, required: true %>
+                <%= f.input :constellation, required: true, collection:   array_of_constellations = [
+                  "Andromeda",
+                  "Cassiopeia",
+                  "Centaurus",
+                  "Cetus",
+                  "Circinus",
+                  "Lyra",
+                  "Microscopium",
+                  "Norma",
+                  "Octans",
+                  "Pavo",
+                  "Pegasus",
+                  "Tucana",
+                  "Ursa Major",
+                  "Virgo",
+                  "Volans",
+                  "Vulpecula"] %>
+                  <div class="slidecontainer">
+                    <%= f.input :water, input_html: {type: "range", min: "0", max: "100", class: "slider", id: "myWaterRange"} %>
+                    <p style="color: $gray;">Water%: <span id="waterDemo"></span></p>
+                  </div>
+                  <div class="slidecontainer">
+                    <%= f.input :breathability, input_html: {type: "range", min: "0", max: "100", class: "slider", id: "myBreathabilityRange"} %>
+                    <p style="color: $gray;">Oxygen%: <span id="breathabilityDemo"></span></p>
+                  </div>
+                  <div class="slidecontainer">
+                    <%= f.input :asteroid_attack, input_html: {type: "range", min: "0", max: "100", class: "slider", id: "myAsteroidAttackRange"} %>
+                    <p style="color: $gray;">Probability of asteroid attack: <span id="myAsteroidAttackdemo"></span></p>
+                  </div>
+                <%= f.input :description, required: true %>
+                <%= f.input :price_per_day, required: true %>
+                <%= f.input :photos, as: :file, multiple: true %>
+                <%= f.input :photos_cache, as: :hidden %>
+                <div class="form-actions form-group text-center">
+                  <%= f.button :submit, class: "btn btn-space-pink" %>
+                </div>
               </div>
-              <div class="slidecontainer">
-                <%= f.input :breathability, input_html: {type: "range", min: "0", max: "100", class: "slider", id: "myBreathabilityRange"} %>
-                <p style="color: $gray;">Oxygen%: <span id="breathabilityDemo"></span></p>
-              </div>
-              <div class="slidecontainer">
-                <%= f.input :asteroid_attack, input_html: {type: "range", min: "0", max: "100", class: "slider", id: "myAsteroidAttackRange"} %>
-                <p style="color: $gray;">Probability of asteroid attack: <span id="myAsteroidAttackdemo"></span></p>
-              </div>
-            <%= f.input :description, required: true %>
-            <%= f.input :price_per_day, required: true %>
-            <%= f.input :photos, as: :file, multiple: true %>
-            <%= f.input :photos_cache, as: :hidden %>
-            </div>
-            <div class="form-actions form-group text-center">
-              <%= f.button :submit, class: "btn btn-space-pink" %>
             </div>
           <% end %>
         </div>

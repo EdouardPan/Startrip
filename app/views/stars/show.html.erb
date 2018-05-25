@@ -11,7 +11,7 @@
       <p><em>*This star belongs to you</em></p>
 
 
-      <%= cl_image_tag("http://res.cloudinary.com/floflow/image/upload/v1526999812/alien1.jpg", class: "cercle-avatar", width: 70, crop: :fill) %>
+      <%= cl_image_tag @star.user.avatar, class: "cercle-avatar", height: 100, width: 100, crop: :fill %>
       <p><%=@star.user.username%></p>
     </div>
 
@@ -33,13 +33,14 @@
 <% else %>
 
   <div class="container">
+
     <div class="container-profil-if-not-user">
       <div class="child">
         <div class="profil">
           <div class="namephoto">
             <h1><%= @star.name%></h1>
             <div class="star-content">
-              <%= cl_image_tag("http://res.cloudinary.com/floflow/image/upload/v1526999812/alien1.jpg", width: 70, crop: :fill) %>
+              <%= cl_image_tag @star.user.avatar, class: "cercle-avatar", height: 100, width: 100, crop: :fill %>
               <p><%=@star.user.username%></p>
             </div>
           </div>
@@ -55,6 +56,7 @@
                 <div class="criteria-item"><i class="fas fa-heart"></i><p>Life existence</p><%= @star.life_existence%> </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>
