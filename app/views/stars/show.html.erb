@@ -3,33 +3,30 @@
 
 <% if @star.user == current_user %>
 
-  <div class="container container-profil-if-user">
 
-    <div class="profil-if-user text-center">
-
-      <h1><%= @star.name%></h1>
-      <p><em>*This star belongs to you</em></p>
-
-
-      <%= cl_image_tag @star.user.avatar, class: "cercle-avatar", height: 100, width: 100, crop: :fill %>
-      <p><%=@star.user.username%></p>
-    </div>
-
-    <div class="description">
-      <div class="description-content">
-        <h3>More about <%= @star.name%> </h3>
-        <p><%= @star.description%> </p>
-        <div class="criteria">
-          <div class="criteria-item"><i class="fas fa-tint"></i><p>Water</p><%= @star.water%> %</div>
-          <div class="criteria-item"><i class="fas fa-leaf"></i><p>Breathability</p><%= @star.breathability%> %</div>
-          <div class="criteria-item"><i class="fas fa-star"></i><p>Asteroid attack</p><%= @star.asteroid_attack%> %</div>
-          <div class="criteria-item"><i class="fas fa-sun"></i><p>Daylight</p><%= @star.daylight%> %</div>
-          <div class="criteria-item"><i class="fas fa-heart"></i><p>Life existence</p>
-            <%if  @star.life_existence%>
-              Yes
-            <% else %>
-              No
-            <% end %>
+  <div class="container">
+    <div class="container-profil-if-not-user">
+      <div class="child">
+        <div class="profil">
+          <div class="namephoto">
+            <h1><%= @star.name%></h1>
+            <div class="star-content">
+              <%= cl_image_tag @star.user.avatar, class: "cercle-avatar", height: 100, width: 100, crop: :fill %>
+              <p><%=@star.user.username%></p>
+            </div>
+          </div>
+          <div class="description">
+            <div class="description-content">
+              <h3>More about <%= @star.name%> </h3>
+              <p><%= @star.description%> </p>
+              <div class="criteria">
+                <div class="criteria-item"><i class="fas fa-tint"></i><p>Water</p><%= @star.water%> %</div>
+                <div class="criteria-item"><i class="fas fa-leaf"></i><p>Breathability</p><%= @star.breathability%> %</div>
+                <div class="criteria-item"><i class="fas fa-star"></i><p>Asteroid attack</p><%= @star.asteroid_attack%> %</div>
+                <div class="criteria-item"><i class="fas fa-sun"></i><p>Daylight</p><%= @star.daylight%> %</div>
+                <div class="criteria-item"><i class="fas fa-heart"></i><p>Life existence</p><%= @star.life_existence%> </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
