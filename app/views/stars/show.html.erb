@@ -13,7 +13,6 @@
 
       <%= cl_image_tag @star.user.avatar, class: "cercle-avatar", height: 100, width: 100, crop: :fill %>
       <p><%=@star.user.username%></p>
-
     </div>
 
     <div class="description">
@@ -29,7 +28,6 @@
         </div>
       </div>
     </div>
-
   </div>
 
 <% else %>
@@ -63,47 +61,45 @@
         </div>
       </div>
 
-        <div class="child">
-          <div class="show-form">
-            <%= simple_form_for([@star, @booking]) do |t| %>
+      <div class="child">
+        <div class="show-form">
+          <%= simple_form_for([@star, @booking]) do |t| %>
             <%= t.input :arrival_date, as: :string, required: false, input_html: {class: "datepicker"} %>
             <%= t.input :departure_date, as: :string, required: false, input_html: {class: "datepicker"} %>
             <div class="price text-center">
               <p> <strong><%=@star.price_per_day%>$</strong> per night</p>
             </div>
             <div class="form-actions form-group text-center">
-
-            <%= t.submit class: "form-actions btn btn-space-pink text-center" %>
-            <% end %>
-           </div>
-          </div>
+              <%= t.submit class: "form-actions btn btn-space-pink text-center" %>
+            </div>
+          <% end %>
         </div>
-        <div class="form-actions form-group text-center">
-        <%= t.submit class: "form-actions btn btn-space-pink text-center" %>
-        <% end %>
-       </div>
       </div>
     </div>
+  </div>
 
 <% end %>
 
-    <div class="review">
-      <div class="list-review">
-        <% if @star.star_reviews.empty? %>
-          <p>No comment yet</p>
-        <% else %>
-          <% @star.star_reviews.reverse.each do |review| %>
-            <%= render 'star_reviews/review_template', object: review %>
-          <% end %>
+<div class="container">
+  <div class="review">
+    <div class="list-review">
+      <% if @star.star_reviews.empty? %>
+        <p>No comment yet</p>
+      <% else %>
+        <% @star.star_reviews.reverse.each do |review| %>
+          <%= render 'star_reviews/review_template', object: review %>
         <% end %>
-      </div>
+      <% end %>
+    </div>
+    <% if @star.user != current_user %>
       <div class="add-review">
         <h1>Add a comment</h1>
         <div class="review-form">
           <%= render 'star_reviews/review_form', star: @star, review: @review %>
         </div>
       </div>
-    </div>
-
+    <% end %>
+  </div>
+</div>
 
 

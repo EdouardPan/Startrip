@@ -5,6 +5,13 @@
       <!-- <h2><%#= star.name %></h2> -->
       <h2><%= object.name %></h2>
       <p><%= object.user.username %>'s star!</p>
+      <% if object.avg_rating != "No rating" %>
+        <div>
+          <% 5.times do |i| %>
+            <i class="fas fa-star <%= 'yellow' if object.avg_rating > i  %>"></i>
+          <% end %>
+        </div>
+      <% end %>
     </div>
     <!-- Remplacer img_tag par cl-img_tag -->
     <%= cl_image_tag object.user.avatar, class: "avatar-small" %>
