@@ -29,4 +29,13 @@ if (slider1){
     slider3.oninput = function PrettySlider() {
         output3.innerHTML = this.value;
     }
+
+  var slider4 = document.getElementById("myDaylightRange");
+  var output4 = document.getElementById("myDaylightdemo");
+  output4.innerHTML = slider4.value; // Display the default slider value
+
+    // Update the current slider value (each time you drag the slider handle)
+    slider4.oninput = function PrettySlider() {
+        output4.innerHTML = this.value;
+    }
 }

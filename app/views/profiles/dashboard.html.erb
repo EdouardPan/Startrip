@@ -222,6 +222,21 @@
                     <%= f.input :asteroid_attack, input_html: {type: "range", min: "0", max: "100", class: "slider", id: "myAsteroidAttackRange"} %>
                     <p style="color: $gray;">Probability of asteroid attack: <span id="myAsteroidAttackdemo"></span></p>
                   </div>
+                  <div class="slidecontainer">
+                    <%= f.input :daylight, input_html: {type: "range", min: "0", max: "100", class: "slider", id: "myDaylightRange"} %>
+                    <p style="color: $gray;">Daylight%: <span id="myDaylightdemo"></span></p>
+                  </div>
+                  <div class="form-group">
+                    <div>
+                      <%= f.label :life_existence, required: true %>
+                    </div>
+                    <label class="radio-inline">
+                      <input type="radio" name="star[life_existence]" id="inlineRadio1" value="true"> Yes
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="star[life_existence]" id="inlineRadio2" value="false"> No
+                    </label>
+                  </div>
                 <%= f.input :description, required: true %>
                 <%= f.input :price_per_day, required: true %>
                 <%= f.input :photos, as: :file, multiple: true %>
