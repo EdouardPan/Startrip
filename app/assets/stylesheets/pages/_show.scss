@@ -1,38 +1,22 @@
 .profil {
-  display: grid;
-  grid-template-columns: 400px 1fr 1fr 1fr;
-  grid-template-rows: 25% 25% 50%;
   height: calc(100vh-70px);
   padding: 30px;
 }
 
 .description {
-  grid-row: 2 / span 1;
-  grid-column: 1 / span 2;
   margin-right: 15%;
   text-align: justify;
   font-size: 14px;
 }
 
-.starname {
-  grid-row: 1 / span 1;
-  grid-column: 1 / span 1;
+.namephoto {
+  display: flex;
 }
 
-.photo {
-  grid-row: 1 / span 1;
-  grid-column: 2/ span 1;
-}
-
-.form {
-  grid-row: 1 / span 3;
-  grid-column : 3 / span 2;
-
-}
 
 .star-content {
   text-align:center;
-  padding-right: 50px;
+ padding-left: 250px;
 }
 
 p {
@@ -93,6 +77,8 @@ p {
 .show-form {
   background-color: black;
   padding: 20px;
+  margin-top: 35px;
+  width:300px;
   h3 {
     margin-top: 0px;
     color: white;
@@ -128,4 +114,14 @@ p {
     font-size: 16px;
   }
 
+}
+
+// if not user
+
+.container-profil-if-not-user {
+  display: flex;
+}
+
+.child {
+  justify-content: space-around;
 }
