@@ -7,12 +7,13 @@
   <div class="navbar-wagon-right hidden-xs hidden-sm">
     <!-- Avatar with dropdown menu -->
     <% if user_signed_in? %>
-      <%= link_to "My bookings", profile_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "My stars", profile_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "My bookings", profile_path(tab: "bookings"), class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "My stars", profile_path(tab: "stars"), class: "navbar-wagon-item navbar-wagon-link" %>
         <div class="navbar-wagon-item">
           <div class="dropdown">
-            <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", data: { toggle: "dropdown"} %>
+            <%= cl_image_tag current_user.avatar, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", data: { toggle: "dropdown"} %>
             <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+              <li><%= link_to('My profile', profile_path(tab: "info")) %></li>
               <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
             </ul>
           </div>
@@ -30,21 +31,21 @@
     <% if user_signed_in? %>
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <%= cl_image_tag current_user.avatar, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
-              <%= link_to profile_path do %>
-                <i class="fa fa-user"></i> <%= t(".booking", default: "My bookings") %>
+              <%= link_to profile_path(tab: "bookings") do %>
+                <i class="fas fa-suitcase"></i> <%= t(".booking", default: "My bookings") %>
               <% end %>
             </li>
             <li>
-              <%= link_to profile_path do %>
-                <i class="fa fa-user"></i> <%= t(".star", default: "My stars") %>
+              <%= link_to profile_path(tab: "stars") do %>
+                <i class="fa fa-star"></i> <%= t(".star", default: "My stars") %>
               <% end %>
             </li>
             <li>
-              <%= link_to profile_path do %>
-                <i class="fa fa-cog"></i>  <%= t(".profile", default: "My profile") %>
+              <%= link_to profile_path(tab: "info") do %>
+                <i class="fa fa-user"></i>  <%= t(".profile", default: "My profile") %>
               <% end %>
             </li>
             <li>

@@ -7,10 +7,35 @@
 
 
 .container-index {
-  margin-top: 70px;
-  margin-bottom: 70px;
+  padding-top: 20px;
+  padding-bottom: 70px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: black;
+  h1 {
+    margin-top: 0px;
+    color: white;
+    text-shadow: 3px 2px $space-pink;
+    padding-top: 50px;
+  }
 }
 
 .index-title {
   margin-bottom: 50px;
+  letter-spacing: 4px;
+}
+
+.container-search-query {
+  margin-top: 30px;
+}
+
+.home-banner-title {
+  margin-top: 0px;
+  padding-top: 0px;
+}
+
+// index button
+
+.explore {
+  font-size: 16px;
 }

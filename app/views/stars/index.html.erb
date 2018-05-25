@@ -1,15 +1,20 @@
 <div class="home-banner">
-  <h1>Explore StarTrip</h1>
-  <p>
-    <span id="banner-typed-text"></span>
-    <%= simple_form_for :query, url: stars_search_path, method: 'get', html: {class: 'form-inline'} do |f| %>
-      <%= f.input :constellation, as: :select, input_hmtl: { class:'select2' }, collection: @constellation, label: false %>
-      <%= f.button :submit, value: 'Find', class: 'btn btn-space-pink' %>
-    <% end %>
-  </p>
+  <div class="home-banner-title">
+    <h1>Fancy some fresh air?</h1>
+  </div>
+    <p>
+      <span id="banner-typed-text"></span>
+      <div class="container-search-query">
+        <%= simple_form_for :query, url: stars_search_path, method: 'get', html: {class: 'form-inline'} do |f| %>
+          <%= f.input :constellation, as: :select, input_html: { class: 'select2'}, collection: @constellation, label: false %>
+          <%= f.button :submit, value: 'Explore', class: 'form-actions btn btn-space-pink explore' %>
+        <% end %>
+      </div>
+    </p>
+
 </div>
 
-<div class="container">
+
   <div class="container-index">
     <h1 class=" index-title text-center">Our selection</h1>
     <div class="row">
@@ -22,7 +27,7 @@
       <%end%>
     </div>
   </div>
-</div>
+
 
 
 

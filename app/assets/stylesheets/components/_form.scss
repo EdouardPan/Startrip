@@ -1,8 +1,9 @@
+// All forms
+
 .wrapper-form {
   background: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0.4), transparent), asset-url('form-banner.jpg');
   background-size: cover;
   background-position: center;
-  height: 100vh;
   h3 {
     margin-top: 0px;
     color: white;
@@ -15,6 +16,19 @@
   }
 }
 
+.wrapper-login {
+  height: 83vh;
+}
+
+// Simple form labels
+
+.simple_form {
+  label {
+    color: white;
+    font-size: 16px;
+  }
+}
+
 .form-inputs {
   margin-top: 50px;
   margin-left: 30px;
@@ -22,52 +36,70 @@
   border-color: $space-pink;
 }
 
-.form-control {
-  border-color: $space-pink;
-  background-color: transparent;
-  color: white;
-  &:focus {
-    border-color: $space-pink;
-    box-shadow: 0 0 5px rgba(98, 101, 228, 1) !important;
-    border-width: 5px;
-  }
-}
 
 .form-devise-links {
-  margin-top: -30px;
+  margin-top: 10px;
   margin-bottom: 50px;
   font-size: 15px;
   font-weight: lighter;
   a {
     color: white;
   }
-}
-
-.simple_form {
-  div.input {
-
-  }
-  label {
+  p {
     color: white;
-    font-size: 16px;
   }
 }
+
 
 .btn-space-pink {
-    background-color: $space-pink;
-    color: white;
-    width: 2;
+  background-color: $space-pink;
+  color: white;
+  padding: 10px;
+  font-size: 15px;
+  &:hover {
+    background-color: black;
+    color: $space-pink;
+    opacity: 0.9;
   }
-
-.form-actions {
-  .btn-space-pink {
-    background-color: $space-pink;
-    color: white;
-    padding: 10px;
-  }
-
 }
 
-#user_remember_me {
-  margin-right: 10px;
+
+
+// Create user
+
+
+  #user_avatar {
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+
+// Existing user
+
+.user_remember_me {
+  display: flex;
+  justify-content: center;
+}
+
+
+
+
+// Home form
+
+.query-input {
+  width: 500px;
+}
+
+
+// Input design
+
+.form-control {
+  border-color: $space-pink;
+  background-color: white;
+  color: black;
+  &:focus {
+    border-color: $space-pink;
+    box-shadow: 0 0 5px rgba(98, 101, 228, 1) !important;
+    border-width: 3px;
+  }
 }
