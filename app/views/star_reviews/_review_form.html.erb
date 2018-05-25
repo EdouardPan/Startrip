@@ -1,0 +1,5 @@
+<%= simple_form_for([star, review], remote: true) do |f| %>
+  <%= f.input :rating %>
+  <%= f.input :comment %>
+  <%= f.submit "Add review", class: "form-actions btn btn-space-pink text-center" %>
+<% end %>

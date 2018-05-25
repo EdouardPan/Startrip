@@ -10,6 +10,9 @@ if (mapElement){
   loadDynamicBannerText();
 }
 
-initUpdateNavbarOnScroll();
+const navBar = document.getElementById('banner-home');
+if (navBar){
+  initUpdateNavbarOnScroll();
+}
 
 

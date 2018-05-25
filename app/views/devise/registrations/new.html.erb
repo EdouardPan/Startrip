@@ -1,7 +1,6 @@
 <div class="wrapper wrapper-form">
 
   <div class="container">
-
     <div class="row">
 
       <div class="col-md-6 col-md-offset-3">
@@ -15,7 +14,17 @@
             <%= f.input :email, required: true, autofocus: true %>
             <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
             <%= f.input :password_confirmation, required: true %>
-            <%= f.input :human, required: true, collection: [true, false] %>
+            <div class="form-group">
+              <div>
+                <%= f.label :human, required: true %>
+              </div>
+              <label class="radio-inline">
+                <input type="radio" name="user[human]" id="inlineRadio1" value="true"> Yes
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="user[human]" id="inlineRadio2" value="false"> No
+              </label>
+            </div>
             <%= f.input :username, required: true %>
             <%= f.input :avatar, required: true, as: :file %>
             <%= f.input :avatar_cache, as: :hidden %>
@@ -36,9 +45,6 @@
         </div>
 
       </div>
-
-    </div>
-
   </div>
 
 </div>
