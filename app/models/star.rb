@@ -37,4 +37,14 @@ class Star < ApplicationRecord
     self.latitude = CONSTELLATIONS[constellation][:lat] + rand(-0.5..0.5)
     self.longitude = CONSTELLATIONS[constellation][:lng] + rand(-0.5..0.5)
   end
+
+  def avg_rating
+    avg = self.star_reviews.map{ |review| review.rating }.sum.fdiv(self.star_reviews.count)
+    if avg.nan?
+      "No rating"
+    else
+      avg.round(0)
+    end
+  end
+
 end
