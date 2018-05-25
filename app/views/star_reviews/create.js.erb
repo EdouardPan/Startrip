@@ -1,0 +1,15 @@
+function addReview() {
+  const reviewList = document.querySelector('.list-review');
+  <% if @star.star_reviews.length == 1 %>
+    reviewList.innerText = "";
+  <% end %>
+  reviewList.insertAdjacentHTML('afterbegin','<%= j render "star_reviews/review_template", object: @star_review %>');
+}
+
+function cleanForm(){
+  const reviewForm = document.getElementById('new_star_review');
+  reviewForm.innerHTML = '<%= j render "star_reviews/review_form", star: @star, review: StarReview.new %>';
+}
+
+addReview();
+cleanForm();

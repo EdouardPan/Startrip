@@ -6,14 +6,15 @@ class StarReviewsController < ApplicationController
     authorize @star_review
     @star_review.star = @star
     @star_review.user = current_user
-    if @star_review.save
-      redirect_to star_path(@star)
-    else
-      # Add instance variable of the stars#show once the controller stars finished
-      @booking = Booking.new
-      @review = @star_review
-      render 'stars/show'
-    end
+    @star_review.save
+    # if @star_review.save
+    #   redirect_to star_path(@star)
+    # else
+    #   # Add instance variable of the stars#show once the controller stars finished
+    #   @booking = Booking.new
+    #   @review = @star_review
+    #   render 'stars/show'
+    # end
   end
 
   # To be deleted and integrated in the stars#show

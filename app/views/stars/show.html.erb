@@ -79,7 +79,7 @@
     <div class="review">
       <div class="list-review">
         <% if @star.star_reviews.empty? %>
-          No comment yet
+          <p>No comment yet</p>
         <% else %>
           <% @star.star_reviews.reverse.each do |review| %>
             <%= render 'star_reviews/review_template', object: review %>
@@ -90,11 +90,7 @@
       <div class="add-review">
         <h1>Add a comment</h1>
         <div class="review-form">
-          <%= simple_form_for([@star, @review]) do |f| %>
-            <%= f.input :rating %>
-            <%= f.input :comment %>
-            <%= f.submit "Add review", class: "form-actions btn btn-space-pink text-center" %>
-          <% end %>
+          <%= render 'star_reviews/review_form', star: @star, review: @review %>
         </div>
       </div>
     </div>
