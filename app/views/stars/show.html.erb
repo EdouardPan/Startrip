@@ -16,16 +16,17 @@
     </div>
 
     <div class="description">
-
-
-      <h3>More about <%= @star.name%> </h3>
-      <p class="text-justify"><%= @star.description%> </p>
-      <p><i class="fas fa-tint"> </i>Water: <%= @star.water%> %</p>
-      <p><i class="fas fa-leaf"> </i> Breathability: <%= @star.breathability%> %</p>
-      <p><i class="fas fa-star"> </i> Asteroid attack: <%= @star.asteroid_attack%> %</p>
-      <p><i class="fas fa-sun"> </i>Daylight: <%= @star.daylight%> %</p>
-      <p><i class="fas fa-heart"> </i>Life existence: <%= @star.life_existence%> </p>
-
+      <div class="description-content">
+        <h3>More about <%= @star.name%> </h3>
+        <p><%= @star.description%> </p>
+        <div class="criteria">
+          <div class="criteria-item"><i class="fas fa-tint"></i><p>Water</p><%= @star.water%> %</div>
+          <div class="criteria-item"><i class="fas fa-leaf"></i><p>Breathability</p><%= @star.breathability%> %</div>
+          <div class="criteria-item"><i class="fas fa-star"></i><p>Asteroid attack</p><%= @star.asteroid_attack%> %</div>
+          <div class="criteria-item"><i class="fas fa-sun"></i><p>Daylight</p><%= @star.daylight%> %</div>
+          <div class="criteria-item"><i class="fas fa-heart"></i><p>Life existence</p><%= @star.life_existence%> </div>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -33,7 +34,6 @@
 <% else %>
 
   <div class="container">
-
     <div class="profil">
       <div class="starname">
         <h1><%= @star.name%></h1>
@@ -44,6 +44,7 @@
           <p><%=@star.user.username%></p>
         </div>
       </div>
+
       <div class="description">
         <div class="description-content">
           <h3>More about <%= @star.name%> </h3>
@@ -58,8 +59,6 @@
         </div>
       </div>
 
-
-
       <div class="show-form">
         <%= simple_form_for([@star, @booking]) do |t| %>
         <%= t.input :arrival_date, as: :string, required: false, input_html: {class: "datepicker"} %>
@@ -69,48 +68,32 @@
           <p> <strong><%=@star.price_per_day%>$</strong> per night</p>
         </div>
         <div class="form-actions form-group text-center">
-
         <%= t.submit class: "form-actions btn btn-space-pink text-center" %>
         <% end %>
        </div>
       </div>
-
-
-
     </div>
+
+<% end %>
 
     <div class="review">
       <div class="list-review">
         <% if @star.star_reviews.empty? %>
-          No comment yet
+          <p>No comment yet</p>
         <% else %>
-          <% @star.star_reviews.each do |review| %>
-            <div class="review-item">
-              <% 5.times do |i| %>
-                <i class="fas fa-star <%= 'yellow' if review.rating > i  %>"></i>
-              <% end %>
-              <%= review.comment %>
-            </div>
+          <% @star.star_reviews.reverse.each do |review| %>
+            <%= render 'star_reviews/review_template', object: review %>
           <% end %>
         <% end %>
       </div>
 
-      <div class="container">
-        <div class="add-review">
-          <h1>Add a comment</h1>
-          <div class="review-form">
-            <%= simple_form_for([@star, @review]) do |f| %>
-              <%= f.input :rating %>
-              <%= f.input :comment %>
-              <%= f.submit "Add review", class: "form-actions btn btn-space-pink text-center" %>
-            <% end %>
-          </div>
+      <div class="add-review">
+        <h1>Add a comment</h1>
+        <div class="review-form">
+          <%= render 'star_reviews/review_form', star: @star, review: @review %>
         </div>
       </div>
-
     </div>
-  </div>
 
-<% end %>
 
 
