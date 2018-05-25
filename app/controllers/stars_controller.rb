@@ -52,7 +52,30 @@ class StarsController < ApplicationController
   end
 
   def search
+    @constellation = params[:query][:constellation]
     @stars = Star.where(constellation: params[:query][:constellation])
+    if !params[:query][:water].nil?
+      if params[:query][:water] == 'Yes'
+        @stars = @stars.where("water > 0")
+      else
+        @stars = @stars.where("water = 0")
+      end
+    end
+    if !params[:query][:life_existence].nil?
+      if params[:query][:life_existence] == 'Yes'
+        @stars = @stars.where(life_existence: true)
+      else
+        @stars = @stars.where(life_existence: false)
+      end
+    end
+    if !params[:query][:asteroid_attack].nil?
+      if params[:query][:asteroid_attack] == 'Yes'
+        @stars = @stars.where("asteroid_attack > 0")
+      else
+        @stars = @stars.where("asteroid_attack = 0")
+      end
+    end
+
     authorize @stars
 
 
