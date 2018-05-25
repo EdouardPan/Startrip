@@ -1,5 +1,6 @@
 <%= render 'shared/banner_show' %>
 
+
 <% if @star.user == current_user %>
 
   <div class="container container-profil-if-user">
@@ -33,50 +34,52 @@
 <% else %>
 
   <div class="container">
-
-    <div class="profil">
-      <div class="starname">
-        <h1><%= @star.name%></h1>
-      </div>
-      <div class="photo">
-        <div class="star-content">
-          <%= cl_image_tag("http://res.cloudinary.com/floflow/image/upload/v1526999812/alien1.jpg", width: 70, crop: :fill) %>
-          <p><%=@star.user.username%></p>
-        </div>
-      </div>
-      <div class="description">
-        <div class="description-content">
-          <h3>More about <%= @star.name%> </h3>
-          <p><%= @star.description%> </p>
-          <div class="criteria">
-            <div class="criteria-item"><i class="fas fa-tint"></i><p>Water</p><%= @star.water%> %</div>
-            <div class="criteria-item"><i class="fas fa-leaf"></i><p>Breathability</p><%= @star.breathability%> %</div>
-            <div class="criteria-item"><i class="fas fa-star"></i><p>Asteroid attack</p><%= @star.asteroid_attack%> %</div>
-            <div class="criteria-item"><i class="fas fa-sun"></i><p>Daylight</p><%= @star.daylight%> %</div>
-            <div class="criteria-item"><i class="fas fa-heart"></i><p>Life existence</p><%= @star.life_existence%> </div>
+    <div class="container-profil-if-not-user">
+      <div class="child">
+        <div class="profil">
+          <div class="namephoto">
+            <h1><%= @star.name%></h1>
+            <div class="star-content">
+              <%= cl_image_tag("http://res.cloudinary.com/floflow/image/upload/v1526999812/alien1.jpg", width: 70, crop: :fill) %>
+              <p><%=@star.user.username%></p>
+            </div>
+          </div>
+          <div class="description">
+            <div class="description-content">
+              <h3>More about <%= @star.name%> </h3>
+              <p><%= @star.description%> </p>
+              <div class="criteria">
+                <div class="criteria-item"><i class="fas fa-tint"></i><p>Water</p><%= @star.water%> %</div>
+                <div class="criteria-item"><i class="fas fa-leaf"></i><p>Breathability</p><%= @star.breathability%> %</div>
+                <div class="criteria-item"><i class="fas fa-star"></i><p>Asteroid attack</p><%= @star.asteroid_attack%> %</div>
+                <div class="criteria-item"><i class="fas fa-sun"></i><p>Daylight</p><%= @star.daylight%> %</div>
+                <div class="criteria-item"><i class="fas fa-heart"></i><p>Life existence</p><%= @star.life_existence%> </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
 
 
-      <div class="show-form">
-        <%= simple_form_for([@star, @booking]) do |t| %>
-        <%= t.input :arrival_date, as: :string, required: false, input_html: {class: "datepicker"} %>
-        <%= t.input :departure_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+        <div class="child">
+          <div class="show-form">
+            <%= simple_form_for([@star, @booking]) do |t| %>
+            <%= t.input :arrival_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+            <%= t.input :departure_date, as: :string, required: false, input_html: {class: "datepicker"} %>
 
-        <div class="price text-center">
-          <p> <strong><%=@star.price_per_day%>$</strong> per night</p>
+            <div class="price text-center">
+              <p> <strong><%=@star.price_per_day%>$</strong> per night</p>
+            </div>
+            <div class="form-actions form-group text-center">
+
+            <%= t.submit class: "form-actions btn btn-space-pink text-center" %>
+            <% end %>
+           </div>
+          </div>
         </div>
-        <div class="form-actions form-group text-center">
 
-        <%= t.submit class: "form-actions btn btn-space-pink text-center" %>
-        <% end %>
-       </div>
       </div>
-
-
-
     </div>
 
     <div class="review">
@@ -94,6 +97,7 @@
           <% end %>
         <% end %>
       </div>
+
 
       <div class="container">
         <div class="add-review">
