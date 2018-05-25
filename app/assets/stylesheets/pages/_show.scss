@@ -69,3 +69,63 @@ p {
 .yellow{
   color:#ffd62e;
 }
+
+
+// If user
+
+
+.profil-if-user {
+  flex: 400px 0 0;
+  justify-content: center;
+}
+
+.container-profil-if-user {
+  display: flex;
+
+}
+
+.cercle-avatar {
+  border-radius: 50%;
+}
+
+// Form
+
+.show-form {
+  background-color: black;
+  padding: 20px;
+  h3 {
+    margin-top: 0px;
+    color: white;
+    text-shadow: 3px 2px $space-pink;
+    padding-top: 50px;
+  }
+  h2 {
+    margin-top: 0;
+    padding-top: 50px;
+  }
+  p {
+    font-color: $space-pink;
+  }
+}
+
+.price {
+  padding: 15px 0;
+
+}
+
+.add-review {
+  padding-bottom: 50px;
+
+  h1 {
+    color: black;
+  }
+}
+
+.review-form {
+
+  label {
+    color: $space-pink;
+    font-size: 16px;
+  }
+
+}
