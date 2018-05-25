@@ -10,7 +10,7 @@
       <p><em>*This star belongs to you</em></p>
 
 
-      <%= cl_image_tag("http://res.cloudinary.com/floflow/image/upload/v1526999812/alien1.jpg", class: "cercle-avatar", width: 70, crop: :fill) %>
+      <%= cl_image_tag @star.user.avatar, class: "cercle-avatar", height: 100, width: 100, crop: :fill %>
       <p><%=@star.user.username%></p>
 
     </div>
@@ -40,7 +40,7 @@
       </div>
       <div class="photo">
         <div class="star-content">
-          <%= cl_image_tag("http://res.cloudinary.com/floflow/image/upload/v1526999812/alien1.jpg", width: 70, crop: :fill) %>
+          <%= cl_image_tag @star.user.avatar, class: "cercle-avatar", height: 100, width: 100, crop: :fill %>
           <p><%=@star.user.username%></p>
         </div>
       </div>

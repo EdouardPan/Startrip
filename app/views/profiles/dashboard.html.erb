@@ -74,9 +74,7 @@
                   <% @current_bookings.each do |booking| %>
                     <div class="col-xs-4">
                       <%= render 'shared/card', object: booking.star %>
-                      <%= link_to star_booking_path(booking.star, booking), method: :delete, data: {confirm: "Are you sure?"} do  %>
-                        <p>Delete this booking</p>
-                      <% end %>
+                      <%= link_to "Delete this booking", star_booking_path(booking.star, booking), class: "black-link", method: :delete, data: {confirm: "Are you sure?"} %>
                     </div>
                   <% end %>
                 <% end %>
@@ -95,9 +93,8 @@
                 <% @next_bookings.each do |booking| %>
                   <div class="col-xs-4">
                     <%= render 'shared/card', object: booking.star %>
-                    <%= link_to star_booking_path(booking.star, booking), method: :delete, data: {confirm: "Are you sure?"} do  %>
-                      <p>Delete this booking</p>
-                    <% end %>
+                    <p class="date-content"> From <%= booking.arrival_date%> to <%= booking.departure_date %> </p>
+                    <%= link_to "Delete this booking", star_booking_path(booking.star, booking), class: "black-link", method: :delete, data: {confirm: "Are you sure?"} %>
                   </div>
                 <% end %>
               <% end %>
@@ -145,13 +142,9 @@
                   <% @my_stars.each do |star| %>
                     <div class="col-xs-4">
                       <%= render 'shared/card', object: star %>
-                      <%= link_to star.name, star_path(star) %> - <%= star.constellation %>
-                      <%= link_to star_path(star), method: :delete, data: {confirm: "Are you sure?"} do  %>
-                      <i class="fas fa-trash-alt"></i>
-                      <% end %>
-                      <%= link_to edit_star_path(star) do  %>
-                      <i class="fas fa-pencil-alt"></i>
-                      <% end %>
+                      <%= link_to "Edit your star", edit_star_path(star), class: "black-link" %>
+                      <br>
+                      <%= link_to "Delete your star", star_path(star), class: "black-link", method: :delete, data: {confirm: "Are you sure?"} %>
                     </div>
                   <% end %>
                 <% end %>
@@ -161,22 +154,24 @@
 
         <div class="container">
           <div class="booked-stars">
-            <h1>My booked stars</h1>
-            <div class="booked-stars-cards">
+            <div class="row">
+              <h1>My booked stars</h1>
+              <div class="booked-stars-cards">
 
-                  <% if @my_booked_stars.empty? %>
-                    <p>None of your stars are currently rented.</p>
-                  <% else %>
-                    <%@my_booked_stars.each do |booking| %>
-                    <div class="col-xs-4">
-                      <%= render 'shared/card', object: booking.star %>
-                      <p> From <%= booking.arrival_date%> to <%= booking.arrival_date %> </p>
-                      <p> by <%= booking.user.username %> </p>
-                    </div>
+                    <% if @my_booked_stars.empty? %>
+                      <p>None of your stars are currently rented.</p>
+                    <% else %>
+                      <%@my_booked_stars.each do |booking| %>
+                      <div class="col-xs-4">
+                        <%= render 'shared/card', object: booking.star %>
+                        <p class="date-content"> From <%= booking.arrival_date%> to <%= booking.departure_date %> </p>
+                        <p> by <%= booking.user.username %> </p>
+                      </div>
+                      <% end %>
                     <% end %>
-                  <% end %>
 
 
+              </div>
             </div>
           </div>
         </div>
