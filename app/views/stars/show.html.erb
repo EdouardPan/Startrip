@@ -24,7 +24,14 @@
                 <div class="criteria-item"><i class="fas fa-leaf"></i><p>Breathability</p><%= @star.breathability%> %</div>
                 <div class="criteria-item"><i class="fas fa-star"></i><p>Asteroid attack</p><%= @star.asteroid_attack%> %</div>
                 <div class="criteria-item"><i class="fas fa-sun"></i><p>Daylight</p><%= @star.daylight%> %</div>
-                <div class="criteria-item"><i class="fas fa-heart"></i><p>Life existence</p><%= @star.life_existence%> </div>
+                  <div class="criteria-item"><i class="fas fa-heart"></i><p>Life existence</p>
+                  <%if  @star.life_existence%>
+                   Yes
+                  <% else %>
+                    No
+                  <% end %>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -56,7 +63,13 @@
                 <div class="criteria-item"><i class="fas fa-leaf"></i><p>Breathability</p><%= @star.breathability%> %</div>
                 <div class="criteria-item"><i class="fas fa-star"></i><p>Asteroid attack</p><%= @star.asteroid_attack%> %</div>
                 <div class="criteria-item"><i class="fas fa-sun"></i><p>Daylight</p><%= @star.daylight%> %</div>
-                <div class="criteria-item"><i class="fas fa-heart"></i><p>Life existence</p><%= @star.life_existence%> </div>
+                <div class="criteria-item"><i class="fas fa-heart"></i><p>Life existence</p>
+                <%if  @star.life_existence%>
+                 Yes
+                <% else %>
+                  No
+                <% end %>
+                </div>
               </div>
             </div>
 
