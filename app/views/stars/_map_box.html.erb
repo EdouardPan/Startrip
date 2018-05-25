@@ -1,6 +1,12 @@
-<strong><%= star.name %></strong>
-<ul>
-  <li>Water: <%= star.water %> %</li>
-  <li>Breathability: <%= star.breathability %> %</li>
-  <li>Asteroid attack: <%= star.asteroid_attack %> %</li>
-</ul>
+
+<div class="map-box">
+  <%= cl_image_tag(star.photos, width: 200, height: 100, crop: :fill) %>
+  <strong><%= star.name %></strong>
+  <ul>
+    <li>Water: <%= star.water %> %</li>
+    <li>Breathability: <%= star.breathability %> %</li>
+    <li>Asteroid attack: <%= star.asteroid_attack %> %</li>
+  </ul>
+  <%= link_to "", star_path(star) %>
+</div>
+
