@@ -11,7 +11,7 @@
       <%= link_to "My stars", profile_path(tab: "stars"), class: "navbar-wagon-item navbar-wagon-link" %>
         <div class="navbar-wagon-item">
           <div class="dropdown">
-            <%= cl_image_tag current_user.avatar, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", data: { toggle: "dropdown"} %>
+            <%= cl_image_tag current_user.avatar, class: "avatar dropdown-toggle", height: 100, width: 100, crop: :thumb, gravity: :face, id: "navbar-wagon-menu", data: { toggle: "dropdown"} %>
             <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
               <li><%= link_to('My profile', profile_path(tab: "info")) %></li>
               <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
@@ -31,7 +31,7 @@
     <% if user_signed_in? %>
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <%= cl_image_tag current_user.avatar, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <%= cl_image_tag current_user.avatar, class: "avatar dropdown-toggle", height: 100, width: 100, crop: :thumb, gravity: :face, id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
               <%= link_to profile_path(tab: "bookings") do %>

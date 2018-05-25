@@ -11,7 +11,7 @@
           <div class="namephoto">
             <h1><%= @star.name%></h1>
             <div class="star-content">
-              <%= cl_image_tag @star.user.avatar, class: "cercle-avatar", height: 100, width: 100, crop: :fill %>
+              <%= cl_image_tag @star.user.avatar, class: "cercle-avatar", width: 100, height: 100, crop: :thumb, gravity: :face %>
               <p><%=@star.user.username%></p>
             </div>
           </div>
@@ -43,7 +43,7 @@
           <div class="namephoto">
             <h1><%= @star.name%></h1>
             <div class="star-content">
-              <%= cl_image_tag @star.user.avatar, class: "cercle-avatar", height: 100, width: 100, crop: :fill %>
+              <%= cl_image_tag @star.user.avatar, class: "cercle-avatar", width: 100, height: 100, crop: :thumb, gravity: :face %>
               <p><%=@star.user.username%></p>
             </div>
           </div>
