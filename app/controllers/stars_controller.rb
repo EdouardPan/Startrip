@@ -13,7 +13,7 @@ class StarsController < ApplicationController
     authorize @star
     @star.user = current_user
     if @star.save
-      redirect_to profile_path(tab: "stars")
+      redirect_to star_path(@star)
     else
       @my_info = current_user
       @my_bookings = current_user.bookings
