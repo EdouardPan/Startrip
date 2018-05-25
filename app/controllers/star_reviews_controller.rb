@@ -5,6 +5,7 @@ class StarReviewsController < ApplicationController
     @star_review = StarReview.new(starreview_params)
     authorize @star_review
     @star_review.star = @star
+    @star_review.user = current_user
     if @star_review.save
       redirect_to star_path(@star)
     else
