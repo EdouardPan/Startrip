@@ -1,9 +1,14 @@
-
-
 <div class="content">
   <div class="left-side">
     <div class="filter-banner">
-      <p>Filters here</p>
+      <%= simple_form_for :query, url: stars_search_path, method: 'get', html: {class: 'form-inline'} do |f| %>
+        <%= f.input :constellation, as: :hidden, label: false, input_html: { value: @constellation } %>
+        <%= f.input :water, collection: ["Yes", "No"], required: false %>
+        <%= f.input :life_existence, collection: ["Yes", "No"], required: false %>
+        <%= f.input :asteroid_attack, collection: ["Yes", "No"], required: false %>
+        <%= f.button :submit, value: 'Explore', class: 'form-actions btn btn-space-pink explore' %>
+        <%= link_to "Clean filters", stars_search_path(query:{constellation: @constellation})  %>
+      <% end %>
     </div>
     <div class="cards-container">
       <div class="row">
@@ -17,6 +22,3 @@
   </div>
   <div id="map" data-markers="<%= @markers.to_json %>"></div>
 </div>
-
-
-
