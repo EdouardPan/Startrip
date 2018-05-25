@@ -1,0 +1,14 @@
+<div class="review-item">
+  <div class="review-info">
+    <div class="user-id">
+      <%= cl_image_tag(object.user.avatar, width: 50, height: 50, crop: :fill) %>
+      <%= object.user.username %>
+    </div>
+    <div class="rating">
+      <% 5.times do |i| %>
+        <i class="fas fa-star <%= 'yellow' if object.rating > i  %>"></i>
+      <% end %>
+    </div>
+  </div>
+  <p><%= object.comment %></p>
+</div>
