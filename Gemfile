@@ -38,3 +38,4 @@ group :development, :test do
 end
 
 gem 'redactor-rails', github: 'glyph-fr/redactor-rails'
+gem 'dotenv-rails', groups: [:development, :test]
