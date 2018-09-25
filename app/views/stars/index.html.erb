@@ -14,13 +14,12 @@
 
 </div>
 
-
   <div class="container-index">
     <h1 class=" index-title text-center">Our selection</h1>
     <div class="row">
        <% unless @stars.nil? %>
         <% @stars.each do |star| %>
-           <div class="col-xs-4">
+           <div class="col-xs-12 col-sm-6 col-md-4">
             <%= render 'shared/card', object: star %>
           </div>
         <% end %>

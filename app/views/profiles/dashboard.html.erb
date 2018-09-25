@@ -119,26 +119,19 @@
           </div>
         </div>
 
-
-
       </div>
 
-
       </div>
-
-
-
-
 
       <div role="tabpanel" class="tab-pane <%= 'active' if @tab == "stars" %>" id="stars">
-
-
 
         <div class="container">
           <div class="stars-list">
             <div class="row">
               <h1>My stars</h1>
-                <% unless @my_stars.nil? %>
+                <% if @my_stars.empty? %>
+                    <p>You don't have any stars yet.</p>
+                <% else %>
                   <% @my_stars.each do |star| %>
                     <div class="col-xs-4">
                       <%= render 'shared/card', object: star %>
@@ -174,10 +167,6 @@
             </div>
           </div>
         </div>
-
-
-
-
 
       </div>
 
@@ -255,20 +244,9 @@
         </div>
       </div>
 
-
-
-
-
     </div>
 
-
-
-
   </div>
-
-
-
-
 
 </div>
 

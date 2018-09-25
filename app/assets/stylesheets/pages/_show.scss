@@ -9,14 +9,33 @@
   font-size: 14px;
 }
 
-.namephoto {
-  display: flex;
+@media(max-width: 45rem) {
+  .description{
+    margin-right: 0%;
+    text-align: left;
+  }
 }
 
+.namephoto {
+  text-align: center;
+
+}
+
+@media(min-width: 45rem) {
+    .namephoto {
+      display: flex;
+  }
+}
 
 .star-content {
   text-align:center;
- padding-left: 250px;
+  padding-left: 250px;
+}
+
+@media(max-width: 45rem) {
+   .star-content {
+      padding-left: 0px;
+  }
 }
 
 p {
@@ -94,6 +113,13 @@ p {
   }
 }
 
+@media(max-width: 45rem) {
+  .child {
+    display:flex;
+    justify-content: center;
+  }
+}
+
 .price {
   padding: 15px 0;
 
@@ -118,14 +144,6 @@ p {
 
 // if not user
 
-.container-profil-if-not-user {
-  display: flex;
-}
-
-.child {
-  justify-content: space-around;
-}
-
 .profil-if-user {
   h1 {
     margin-top: 0px;
@@ -143,9 +161,18 @@ p {
     margin-top: 0px;
     color: black;
     text-shadow: 3px 2px $space-pink;
-    padding-top: 50px;
   }
   p {
     color: black;
+  }
+}
+
+@media(min-width: 45rem) {
+  .container-profil-if-not-user {
+    display: flex;
+    padding-top: 50px;
+  }
+  .child{
+    justify-content: space-around;
   }
 }
