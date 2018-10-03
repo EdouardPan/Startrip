@@ -22,7 +22,7 @@
           <li role="presentation" <%= "class=active" if @tab == "info" %> ><a href="#info" aria-controls="info" role="tab" data-toggle="tab">My info</a></li>
           <li role="presentation" class="<%= 'active' if @tab == "bookings" %>" ><a href="#bookings" aria-controls="bookings" role="tab" data-toggle="tab">My bookings</a></li>
           <li role="presentation" <%= "class=active" if @tab == "stars" %>><a href="#stars" aria-controls="stars" role="tab" data-toggle="tab">My stars</a></li>
-          <li role="presentation"><a href="#newstar" aria-controls="newstar" role="tab" data-toggle="tab">Add a New star</a></li>
+          <li role="presentation"><a href="#newstar" aria-controls="newstar" role="tab" data-toggle="tab">Add a star</a></li>
         </ul>
       </div>
     </div>
@@ -107,7 +107,7 @@
             <h1>Your past trips</h1>
             <div class="past-bookings-cards">
               <% if @past_bookings.empty? %>
-                <p>No past trips.</p>
+                <p>You have no past trips.</p>
               <% else %>
                 <% @past_bookings.each do |booking| %>
                   <div class="col-xs-4">
@@ -119,26 +119,19 @@
           </div>
         </div>
 
-
-
       </div>
 
-
       </div>
-
-
-
-
 
       <div role="tabpanel" class="tab-pane <%= 'active' if @tab == "stars" %>" id="stars">
-
-
 
         <div class="container">
           <div class="stars-list">
             <div class="row">
               <h1>My stars</h1>
-                <% unless @my_stars.nil? %>
+                <% if @my_stars.empty? %>
+                    <p>You don't have any stars yet.</p>
+                <% else %>
                   <% @my_stars.each do |star| %>
                     <div class="col-xs-4">
                       <%= render 'shared/card', object: star %>
@@ -174,10 +167,6 @@
             </div>
           </div>
         </div>
-
-
-
-
 
       </div>
 
@@ -249,27 +238,11 @@
           <% end %>
         </div>
       </div>
-
         </div>
-
         </div>
       </div>
-
-
-
-
-
     </div>
-
-
-
-
   </div>
-
-
-
-
-
 </div>
 
 
